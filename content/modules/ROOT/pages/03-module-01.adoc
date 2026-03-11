@@ -22,7 +22,7 @@ git clone -b ansible https://github.com/tchughesiv/self-service-agent-blueprint.
 cd self-service-agent-blueprint
 ----
 
-*Note:* Demo mode is on the ansible branch; once proven with this showroom, it will merge to the canonical https://github.com/rh-ai-quickstart/it-self-service-agent[rh-ai-quickstart/it-self-service-agent] repo.
+*Note:* Demo mode is on the ansible branch; once proven with this showroom, it will merge to the canonical https://github.com/rh-ai-quickstart/it-self-service-agent[rh-ai-quickstart/it-self-service-agent,window="_blank"] repo.
 
 **Expected outcome:** Repository cloned to local machine.
 

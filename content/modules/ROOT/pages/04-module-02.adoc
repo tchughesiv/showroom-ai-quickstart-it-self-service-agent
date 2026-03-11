@@ -14,7 +14,7 @@ By the end of this module you will be able to:
 
 == Why Email?
 
-IT workflows—approvals, follow-ups, ticket updates—often happen over email. The quickstart *meets users where they are*: email is a continuation and notification channel where conversations resume after delays and responses can be asynchronous. The same agent works across Slack, email, ServiceNow, and CLI. See https://developers.redhat.com/articles/2026/02/09/self-service-ai-agent-slack-email-servicenow[AI meets you where you are: Slack, email & ServiceNow] for more.
+IT workflows—approvals, follow-ups, ticket updates—often happen over email. The quickstart *meets users where they are*: email is a continuation and notification channel where conversations resume after delays and responses can be asynchronous. The same agent works across Slack, email, ServiceNow, and CLI. See https://developers.redhat.com/articles/2026/02/09/self-service-ai-agent-slack-email-servicenow[AI meets you where you are: Slack, email & ServiceNow,window="_blank"] for more.
 
 == Step 1: Open the Webmail UI
 

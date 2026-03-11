@@ -81,8 +81,8 @@ flowchart LR
 
 == Related Resources
 
-* https://github.com/rh-ai-quickstart/it-self-service-agent[Quickstart repository] — install and code
-* https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/COMPONENT_GUIDE.md[Component Guide] — architecture and components
-* https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/DEPLOYMENT_MODE_GUIDE.md[Deployment Mode Guide] — demo vs testing vs production
-* https://www.redhat.com/en/blog/manual-agentic-streamlining-it-processes-red-hat-openshift-ai[Blog: From manual to agentic]
-* https://developers.redhat.com/articles/2026/01/26/ai-quickstart-self-service-agent-it-process-automation[Technical blog series: AI quickstart IT Self-Service Agent]
+* https://github.com/rh-ai-quickstart/it-self-service-agent[Quickstart repository,window="_blank"] — install and code
+* https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/COMPONENT_GUIDE.md[Component Guide,window="_blank"] — architecture and components
+* https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/DEPLOYMENT_MODE_GUIDE.md[Deployment Mode Guide,window="_blank"] — demo vs testing vs production
+* https://www.redhat.com/en/blog/manual-agentic-streamlining-it-processes-red-hat-openshift-ai[Blog: From manual to agentic,window="_blank"]
+* https://developers.redhat.com/articles/2026/01/26/ai-quickstart-self-service-agent-it-process-automation[Technical blog series: AI quickstart IT Self-Service Agent,window="_blank"]

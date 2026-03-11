@@ -10,8 +10,8 @@
 
 The quickstart requires access to a Llama 3 70B model. If you do not have one:
 
-* Use the https://github.com/rh-ai-quickstart/ai-architecture-charts/tree/main/llm-service[LLM Service Helm Chart] to deploy `meta-llama/Meta-Llama-3-70B`
-* Or follow the https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/docs/alternate-journeys/scout-only.md[Scout-only alternate journey] if you have Llama-4-Scout-17B-16E instead
+* Use the https://github.com/rh-ai-quickstart/ai-architecture-charts/tree/main/llm-service[LLM Service Helm Chart,window="_blank"] to deploy `meta-llama/Meta-Llama-3-70B`
+* Or follow the https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/docs/alternate-journeys/scout-only.md[Scout-only alternate journey,window="_blank"] if you have Llama-4-Scout-17B-16E instead
 
 === Hardware Requirements
 
