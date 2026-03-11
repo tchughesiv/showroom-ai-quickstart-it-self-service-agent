@@ -16,7 +16,7 @@ The quickstart requires access to a Llama 3 70B model. If you do not have one:
 === Hardware Requirements
 
 * CPU: 10–12 cores
-* Memory: 8 Gi
+* Memory: 10 Gi
 * Storage: 50 Gi
 * *Optional:* GPU for Llama Guard 3 safety shields
 
