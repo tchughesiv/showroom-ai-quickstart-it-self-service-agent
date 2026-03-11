@@ -123,6 +123,8 @@ This document tracks implementation progress for the showroom content repository
    - Pin content branch/tag in `prod.yaml`
    - Verify end-to-end deployment on RHDP
 
+**Detailed guide:** See [docs/PHASE-6-GUIDE.md](docs/PHASE-6-GUIDE.md) for step-by-step instructions.
+
 ---
 
 ## Quick Reference

@@ -53,7 +53,7 @@ The quickstart requires access to a Llama 3 70B–capable model. For Demo Mode, 
 □ **LLM endpoint** — API URL and token ready
 □ **Repository cloned** — `tchughesiv/self-service-agent-blueprint` (ansible branch) — Demo Mode lives here
 □ **Tools installed** — Helm, oc, kubectl (Podman only if building images)
-□ **Namespace created** — e.g. `oc new-project my-agent-namespace`
+□ **Namespace ready** — `make install` creates it; or run `oc new-project my-agent-namespace` first if preferred
 
 == Setup Validation
 
@@ -70,6 +70,17 @@ helm version
 ----
 
 == Troubleshooting
+
+=== Demo Mode — Specific
+
+**Problem:** Webmail URL not displayed after `make install`
+→ **Solution:** Run `oc get routes -n $NAMESPACE | grep -i email` to find the test-email-server route. Ensure Greenmail pod is Running: `oc get pods -n $NAMESPACE | grep test-email`.
+
+**Problem:** Greenmail or test-email-server pod not ready
+→ **Solution:** Check logs: `oc logs -n $NAMESPACE deployment/test-email-server -c greenmail`. Ensure cluster has ~10 Gi allocatable memory. Wait a few minutes — Greenmail can take 2–3 minutes to start.
+
+**Problem:** Agent doesn't respond in webmail
+→ **Solution:** Verify LLM connectivity from the cluster: `LLM_URL` and `LLM_API_TOKEN` must be set before `make install`. Check agent-service and request-manager pods: `oc logs -n $NAMESPACE deployment/self-service-agent-service`.
 
 === Common Issues
 

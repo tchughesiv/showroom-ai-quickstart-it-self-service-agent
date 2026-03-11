@@ -12,8 +12,7 @@ By the end of this workshop you will:
 
 * Deploy the IT self-service agent platform to OpenShift using Helm (Demo Mode)
 * Complete the laptop refresh flow via the test email server webmail UI
-* Understand extensibility and production patterns (evals, tracing)
-* Use distributed tracing to understand agent workflows
+* Understand extensibility and production patterns (evals, tracing, blog series)
 
 *Time to complete:* 30–60 minutes (cluster and LLM ready)
 

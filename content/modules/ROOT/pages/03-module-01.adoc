@@ -65,6 +65,9 @@ oc get routes -n $NAMESPACE
 
 **Expected outcome:** All pods in `Running` state, routes created.
 
+// Screenshot placeholder — add deployment-verify.png to content/modules/ROOT/images/
+image::deployment-verify.png[Pods and routes verified,align="center",width=600]
+
 == Module 1 Summary
 
 **What you learned:**
