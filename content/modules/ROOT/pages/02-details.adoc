@@ -22,14 +22,12 @@ The quickstart requires access to a Llama 3 70B model. If you do not have one:
 
 === Software Requirements
 
-* **Python 3.12+**
-* **uv** — https://github.com/astral-sh/uv[uv] (0.8.9 recommended)
-* **Podman** — Container runtime
 * **Helm** — Kubernetes package manager
-* **oc CLI** — OpenShift command-line tool
-* **kubectl** — Kubernetes CLI
+* **oc CLI** — OpenShift (includes kubectl) or **kubectl** — vanilla Kubernetes
 * **git** — Version control
 * **make** — Build automation
+* *Optional:* **Podman** or Docker — only if building images from source
+* *Optional:* **Python 3.12+** and **uv** — only for evaluations or building from source
 
 === Cluster Requirements
 
@@ -53,7 +51,7 @@ The quickstart requires access to a Llama 3 70B model. If you do not have one:
 □ **OpenShift access** — Test `oc login` and `oc whoami`
 □ **LLM endpoint** — API URL and token ready
 □ **Repository cloned** — `tchughesiv/self-service-agent-blueprint` (ansible branch) — Demo Mode lives here
-□ **Tools installed** — Python, uv, Podman, Helm, oc, kubectl
+□ **Tools installed** — Helm, oc, kubectl (Podman only if building images)
 □ **Namespace created** — e.g. `oc new-project my-agent-namespace`
 
 == Setup Validation
@@ -66,15 +64,8 @@ Run these commands to verify your environment:
 oc version
 oc whoami
 
-# Verify Podman
-podman version
-
 # Verify Helm
 helm version
-
-# Verify Python and uv
-python --version
-uv --version
 ----
 
 == Troubleshooting

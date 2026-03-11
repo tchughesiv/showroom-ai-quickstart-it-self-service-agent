@@ -44,18 +44,7 @@ export HF_TOKEN=1234
 
 Replace `your-api-token` and `https://your-llm-endpoint` with your actual LLM credentials.
 
-== Step 3: Build Images (Optional)
-
-If using pre-built images, skip to Step 4.
-
-[source,bash]
-----
-export REGISTRY=quay.io/your-org
-make build-all-images
-make push-all-images
-----
-
-== Step 4: Deploy with Helm
+== Step 3: Deploy with Helm
 
 Log in to OpenShift and deploy in **Demo Mode** (Greenmail + test email server deployed automatically, no Knative):
 
@@ -68,7 +57,7 @@ make install INSTALL_MODE=demo NAMESPACE=$NAMESPACE
 
 **Expected outcome:** Helm chart deployed; test email server (Greenmail + webmail UI) and all pods start. Note the **webmail URL** displayed at the end — you'll use it in Module 2 to complete the laptop refresh flow via email.
 
-== Step 5: Verify Deployment
+== Step 4: Verify Deployment
 
 [source,bash]
 ----
