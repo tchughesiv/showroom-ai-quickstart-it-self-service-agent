@@ -12,7 +12,7 @@ By the end of this workshop you will:
 
 * Deploy the IT self-service agent platform to OpenShift using Helm (Demo Mode)
 * Complete the laptop refresh flow via the test email server webmail UI
-* Run evaluations to validate agent quality
+* Understand extensibility and production patterns (evals, tracing)
 * Use distributed tracing to understand agent workflows
 
 *Time to complete:* 60–180 minutes (depending on deployment mode and optional modules)
@@ -33,7 +33,7 @@ The platform integrates with knowledge bases, MCP (Model Context Protocol) serve
 . *xref:02-details.adoc[Requirements and Setup]* — Prerequisites and environment setup
 . *xref:03-module-01.adoc[Module 1: Deploy to OpenShift]* — Clone, configure, and deploy with Helm
 . *xref:04-module-02.adoc[Module 2: Interact with the Agent]* — Complete the laptop refresh flow via email (webmail UI)
-. *xref:05-module-03.adoc[Module 3: Evaluations and Tracing]* — Run evaluations and explore OpenTelemetry
+. *xref:05-module-03.adoc[Module 3: Going Further]* — Extensibility, evals, tracing, and blog series
 . *xref:99-conclusion.adoc[Conclusion and Next Steps]* — Summary and recommended follow-ups
 
 == Key Technologies

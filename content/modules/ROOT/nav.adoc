@@ -7,6 +7,6 @@
 . Hands-On Modules
 * xref:03-module-01.adoc[Module 1: Deploy to OpenShift]
 * xref:04-module-02.adoc[Module 2: Interact with the Agent]
-* xref:05-module-03.adoc[Module 3: Evaluations and Tracing]
+* xref:05-module-03.adoc[Module 3: Going Further]
 
 * xref:99-conclusion.adoc[Conclusion and Next Steps]
