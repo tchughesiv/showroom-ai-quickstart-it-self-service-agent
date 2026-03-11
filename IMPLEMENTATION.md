@@ -66,8 +66,8 @@ This document tracks implementation progress for the showroom content repository
 | `01-overview.adoc` | Business context, target audience, architecture, related resources |
 | `02-details.adoc` | Prerequisites, hardware/software requirements, setup checklist, troubleshooting |
 | `03-module-01.adoc` | Deploy to OpenShift (clone, env vars, Helm, verify) |
-| `04-module-02.adoc` | Interact with the agent via CLI (laptop refresh workflow) |
-| `05-module-03.adoc` | Evaluations and distributed tracing |
+| `04-module-02.adoc` | Interact with the agent via email (webmail UI; laptop refresh workflow) |
+| `05-module-03.adoc` | Going Further — extensibility, evals, tracing, blog series |
 | `99-conclusion.adoc` | Summary, optional integrations, customization, resources |
 
 **Note:** Legacy template pages (e.g. quick-start, content-repo, agnosticv-config) remain in `content/modules/ROOT/pages/` but are not in the nav. They are still reachable by URL for reference.
@@ -91,7 +91,7 @@ This document tracks implementation progress for the showroom content repository
 
 **Completed:**
 1. **ui-config.yml** — OCP Console (${DOMAIN}), Quickstart Repo, Llama Stack Docs tabs
-2. **Assets** — `assets/images/` created; Mermaid architecture flowchart in 01-overview.adoc
+2. **Assets** — Mermaid architecture flowchart embedded in 01-overview.adoc (no separate image files)
 
 ---
 
@@ -148,3 +148,6 @@ Open http://localhost:8080
 
 ### Install Mode
 This showroom uses **demo** install mode (`make install INSTALL_MODE=demo`) for ephemeral demos — deploys Greenmail + demo values, no Knative operators required. Use `make uninstall` for removal.
+
+### Audit
+See [AUDIT.md](AUDIT.md) for the latest audit (issues, improvements, next steps).

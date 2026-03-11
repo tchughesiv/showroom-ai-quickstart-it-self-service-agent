@@ -75,4 +75,4 @@ To start a fresh conversation with the same user, type `reset` in the message bo
 * Completing the laptop refresh workflow end-to-end
 * Testing eligibility and region-specific options with different users
 
-**Next:** xref:05-module-03.adoc[Module 3: Evaluations and Tracing] — run evaluations and explore observability.
+**Next:** xref:05-module-03.adoc[Module 3: Going Further] — extensibility, evals, tracing, and blog series.
