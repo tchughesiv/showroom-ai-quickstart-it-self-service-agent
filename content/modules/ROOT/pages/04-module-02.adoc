@@ -46,7 +46,7 @@ oc get routes -n $NAMESPACE | grep -i email
 Once the laptop refresh specialist has your session, continue in the webmail UI:
 
 * **You:** Ask to see available options (e.g. `I'd like to see available laptop options`)
-* **Expected:** Agent lists four laptop options with specs and pricing for your region (NA, EMEA, APAC, or LATAM)
+* **Expected:** Agent lists four laptop options with specs and pricing for your region (NA, EMEA, APAC, or LATAM). *LLM responses can take 10–30 seconds.*
 
 * **You:** Select a laptop (e.g. `I'd like option 1, the Apple MacBook Air M2`)
 * **Expected:** Agent confirms and asks for approval to create a ServiceNow ticket
