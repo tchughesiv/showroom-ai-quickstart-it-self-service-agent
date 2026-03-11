@@ -12,6 +12,10 @@ By the end of this module you will be able to:
 * Complete the laptop refresh workflow via email
 * Test different user scenarios using the user dropdown
 
+== Why Email?
+
+IT workflows—approvals, follow-ups, ticket updates—often happen over email. The quickstart *meets users where they are*: email is a continuation and notification channel where conversations resume after delays and responses can be asynchronous. The same agent works across Slack, email, ServiceNow, and CLI. See https://developers.redhat.com/articles/2026/02/09/self-service-ai-agent-slack-email-servicenow[AI meets you where you are: Slack, email & ServiceNow] for more.
+
 == Step 1: Open the Webmail UI
 
 Demo Mode deploys a test email server (Greenmail) with a webmail UI. At the end of Module 1, the deployment displayed a **webmail URL**. Open that URL in your browser.
