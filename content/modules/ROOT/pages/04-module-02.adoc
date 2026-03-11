@@ -29,26 +29,29 @@ oc get routes -n $NAMESPACE | grep -i email
 
 **Expected outcome:** Webmail UI opens with a user dropdown and message composer.
 
-== Step 2: Start the Laptop Refresh Flow
+== Step 2: Start the Conversation
 
 . Select a user from the dropdown (e.g. `alice.johnson@company.com`)
 . The subject is pre-filled with "Laptop refresh"
-. In the message box, type: `Hi, I'd like to start a laptop refresh request`
+. Send an initial message—e.g. `Hello` or `Help`—to get a response from the routing agent
+. Tell the agent you want a laptop refresh (e.g. `I'd like to start a laptop refresh request`)
 . Click "Send"
 
-**Expected outcome:** Agent responds with laptop info, eligibility summary, and asks if you'd like to see available options.
+**Expected outcome:** The routing agent responds; once you request a laptop refresh, you're handed off to the specialist agent, which returns laptop info, eligibility, and asks if you'd like to see available options.
+
+*You don't need to type these phrases exactly—they're example prompts. The agent understands natural language; follow the flow in whatever way feels natural.*
 
 == Step 3: Complete the Workflow
 
-Continue the conversation in the webmail UI:
+Once the laptop refresh specialist has your session, continue in the webmail UI:
 
-* **You:** `I'd like to see available laptop options`
+* **You:** Ask to see available options (e.g. `I'd like to see available laptop options`)
 * **Expected:** Agent lists four laptop options with specs and pricing for your region (NA, EMEA, APAC, or LATAM)
 
-* **You:** `I'd like option 1, the Apple MacBook Air M2`
+* **You:** Select a laptop (e.g. `I'd like option 1, the Apple MacBook Air M2`)
 * **Expected:** Agent confirms and asks for approval to create a ServiceNow ticket
 
-* **You:** `Yes, please create the ticket`
+* **You:** Approve (e.g. `Yes, please create the ticket`)
 * **Expected:** Ticket created, ticket number shown (e.g. REQ3143724), confirmation message
 
 == Step 4: Test Different User Scenarios
