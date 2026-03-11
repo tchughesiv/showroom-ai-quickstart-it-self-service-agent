@@ -1,12 +1,12 @@
 name: modules
-title: Self-Service Agent Quickstart
+title: IT Self-Service Agent Quickstart
 version: ~
 nav:
   - modules/ROOT/nav.adoc
 
 asciidoc:
   attributes:
-    lab_name: Self-Service Agent for IT Process Automation
+    lab_name: IT Self-Service Agent for IT Process Automation
     guid: '%GUID%'
     ssh_user: lab-user
     ssh_password: changeme

@@ -8,7 +8,7 @@
 
 By the end of this module you will be able to:
 
-* Clone the self-service agent quickstart and configure environment variables
+* Clone the IT self-service agent quickstart and configure environment variables
 * Deploy the platform to OpenShift using Helm (Testing Mode)
 * Verify pods, routes, and services
 

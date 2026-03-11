@@ -1,4 +1,4 @@
-# Self-Service Agent Showroom — Implementation Status
+# IT Self-Service Agent Showroom — Implementation Status
 
 This document tracks implementation progress for the showroom content repository that accompanies the IT Self-Service Agent quickstart.
 
@@ -36,21 +36,21 @@ This document tracks implementation progress for the showroom content repository
 
 ## Phase 2: Replace Template Content — ✅ Complete
 
-**Goal:** Replace the showroom template boilerplate with self-service agent–specific content.
+**Goal:** Replace the showroom template boilerplate with IT self-service agent–specific content.
 
 ### 2a. Branding and Metadata ✅
 
 | File | Changes |
 |------|---------|
-| `content/antora.yml` | Title set to "Self-Service Agent Quickstart"; AsciiDoc attributes for lab name, GUID, pagination |
+| `content/antora.yml` | Title set to "IT Self-Service Agent Quickstart"; AsciiDoc attributes for lab name, GUID, pagination |
 | `site.yml` | Site title and URL updated for this showroom |
-| `README.adoc` | Rewritten for self-service agent content; quick start and local dev instructions |
+| `README.adoc` | Rewritten for IT self-service agent content; quick start and local dev instructions |
 
 ### 2b. Navigation ✅
 
 | File | Changes |
 |------|---------|
-| `content/modules/ROOT/nav.adoc` | Replaced template nav with self-service agent structure |
+| `content/modules/ROOT/nav.adoc` | Replaced template nav with IT self-service agent structure |
 
 **Structure:**
 - Lab Overview

@@ -1,4 +1,4 @@
-= Self-Service Agent Quickstart Lab
+= IT Self-Service Agent Quickstart Lab
 :navtitle: Lab Overview
 :toc:
 :toc-placement: preamble
@@ -6,18 +6,18 @@
 
 == What You'll Learn
 
-This hands-on lab guides you through deploying and using an AI-driven self-service agent for IT process automation on Red Hat OpenShift.
+This hands-on lab guides you through deploying and using the IT Self-Service Agent for IT process automation on Red Hat OpenShift.
 
 By the end of this workshop you will:
 
-* Deploy the self-service agent platform to OpenShift using Helm
+* Deploy the IT self-service agent platform to OpenShift using Helm
 * Interact with the laptop refresh agent through the CLI
 * Run evaluations to validate agent quality
 * Use distributed tracing to understand agent workflows
 
 *Time to complete:* 60–180 minutes (depending on deployment mode and optional modules)
 
-== What the Self-Service Agent Does
+== What the IT Self-Service Agent Does
 
 The quickstart implements a **laptop refresh** IT process. Employees can:
 

@@ -1,12 +1,12 @@
-= Self-Service Agent Quickstart Showroom
+= IT Self-Service Agent Quickstart Showroom
 
-Lab content for the *Automate IT Processes with Self-Service Agents* quickstart — AI-driven IT process automation using Red Hat OpenShift AI, Llama Stack, LangGraph, and MCP servers.
+Lab content for the *Automate IT Processes with IT Self-Service Agents* quickstart — AI-driven IT process automation using Red Hat OpenShift AI, Llama Stack, LangGraph, and MCP servers.
 
 == Content Repo
 
 This Antora-based showroom provides hands-on lab instructions for:
 
-* Deploying the self-service agent platform on OpenShift
+* Deploying the IT self-service agent platform on OpenShift
 * Interacting with the laptop refresh agent via CLI
 * Running evaluations and tracing agent workflows
 

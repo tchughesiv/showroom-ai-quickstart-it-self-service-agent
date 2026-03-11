@@ -8,7 +8,7 @@
 
 In this lab you:
 
-* Deployed the self-service agent platform to OpenShift
+* Deployed the IT self-service agent platform to OpenShift
 * Interacted with the laptop refresh agent via CLI
 * Ran evaluations and explored tracing (Module 3)
 

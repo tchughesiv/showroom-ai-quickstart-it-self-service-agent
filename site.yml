@@ -1,6 +1,6 @@
 ---
 site:
-  title: Self-Service Agent Quickstart
+  title: IT Self-Service Agent Quickstart
   url: https://github.com/tchughesiv/showroom-ai-quickstart-it-self-service-agent
   start_page: modules::index.adoc
 
