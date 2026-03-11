@@ -1,0 +1,59 @@
+= Module 3: Evaluations and Tracing
+:navtitle: Module 3 - Evaluations
+:toc:
+:toc-placement: preamble
+:icons: font
+
+== Learning Objectives
+
+By the end of this module you will be able to:
+
+* Run evaluations to validate agent behavior
+* Explore distributed tracing for agent workflows
+* Understand how observability supports production operations
+
+== Why Evaluations Matter
+
+Generative AI agents are non-deterministic. Traditional tests are not enough. The evaluation framework:
+
+* Validates business-specific requirements (e.g. policy compliance)
+* Ensures information gathering meets standards
+* Catches regressions when you change prompts or configurations
+
+== Step 1: Run Evaluations
+
+From the quickstart repository root:
+
+[source,bash]
+----
+make eval NAMESPACE=$NAMESPACE
+# Or with specific options: make eval NAMESPACE=$NAMESPACE EVAL_OPTS="..."
+----
+
+**Expected outcome:** Evaluation runs complete; metrics and results displayed.
+
+For detailed evaluation options and metrics, see the https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/EVALUATIONS_GUIDE.md[Evaluations Guide].
+
+== Step 2: Follow the Flow with Tracing
+
+If OpenTelemetry is configured, traces show how requests flow through the system:
+
+* Routing agent handoffs
+* Specialist agent interactions
+* Knowledge base lookups
+* MCP server calls
+
+Check your cluster's observability stack (e.g. Jaeger, Tempo) or OpenShift's built-in tracing to inspect spans.
+
+== Step 3: Optional — Smaller Prompts
+
+The quickstart supports experimenting with different prompt configurations. See the https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/PROMPT_CONFIGURATION_GUIDE.md[Prompt Configuration Guide] for options and alternate journeys.
+
+== Module 3 Summary
+
+**What you learned:**
+* Running evaluations for agent quality
+* Using tracing to understand agent flows
+* Optional prompt experimentation
+
+**Next:** xref:99-conclusion.adoc[Conclusion and Next Steps] — wrap up and recommended follow-ups.

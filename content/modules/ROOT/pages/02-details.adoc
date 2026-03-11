@@ -1,0 +1,94 @@
+= Requirements and Setup
+:navtitle: Requirements and Setup
+:toc:
+:toc-placement: preamble
+:icons: font
+
+== Prerequisites
+
+=== LLM Access
+
+The quickstart requires access to a Llama 3 70B model. If you do not have one:
+
+* Use the https://github.com/rh-ai-quickstart/ai-architecture-charts/tree/main/llm-service[LLM Service Helm Chart] to deploy `meta-llama/Meta-Llama-3-70B`
+* Or follow the https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/docs/alternate-journeys/scout-only.md[Scout-only alternate journey] if you have Llama-4-Scout-17B-16E instead
+
+=== Hardware Requirements
+
+* CPU: 10–12 cores
+* Memory: 8 Gi
+* Storage: 50 Gi
+* *Optional:* GPU for Llama Guard 3 safety shields
+
+=== Software Requirements
+
+* **Python 3.12+**
+* **uv** — https://github.com/astral-sh/uv[uv] (0.8.9 recommended)
+* **Podman** — Container runtime
+* **Helm** — Kubernetes package manager
+* **oc CLI** — OpenShift command-line tool
+* **kubectl** — Kubernetes CLI
+* **git** — Version control
+* **make** — Build automation
+
+=== Cluster Requirements
+
+* **Demo Mode:** OpenShift/Kubernetes (no special operators) — used by this showroom
+* **Testing Mode:** Mock Eventing, no Knative
+* **Production Mode:** OpenShift 4.17.0+ with:
+** OpenShift AI
+** Serverless Operator
+** Streams for Apache Kafka Operator
+** Knative Eventing with Kafka broker
+
+=== Permissions
+
+* Namespace admin in the target OpenShift project
+* Ability to pull images from quay.io
+* LLM API endpoint with credentials
+* *Optional:* Slack, ServiceNow, or email for integrations
+
+== Pre-Workshop Checklist
+
+□ **OpenShift access** — Test `oc login` and `oc whoami`
+□ **LLM endpoint** — API URL and token ready
+□ **Repository cloned** — `rh-ai-quickstart/it-self-service-agent` (or dev fork)
+□ **Tools installed** — Python, uv, Podman, Helm, oc, kubectl
+□ **Namespace created** — e.g. `oc new-project my-agent-namespace`
+
+== Setup Validation
+
+Run these commands to verify your environment:
+
+[source,bash]
+----
+# Verify OpenShift CLI
+oc version
+oc whoami
+
+# Verify Podman
+podman version
+
+# Verify Helm
+helm version
+
+# Verify Python and uv
+python --version
+uv --version
+----
+
+== Troubleshooting
+
+=== Common Issues
+
+**Problem:** `oc command not found`
+→ **Solution:** Install the OpenShift CLI from the Red Hat Customer Portal or your cluster's web console.
+
+**Problem:** `LLM connection fails`
+→ **Solution:** Verify `LLM_URL` and `LLM_API_TOKEN`. Ensure the endpoint is reachable from the cluster.
+
+**Problem:** `Image pull errors`
+→ **Solution:** Confirm quay.io access and image pull secrets. Run `oc get secret` in your namespace.
+
+**Problem:** `Knative/Kafka pods not ready` (Production Mode)
+→ **Solution:** See the quickstart’s deployment guide for operator ordering and broker configuration.

@@ -1,0 +1,12 @@
+# Local preview with live reload
+# Run: podman-compose up
+# Open: http://localhost:8080
+
+services:
+  antora:
+    image: ghcr.io/juliaaano/antora-viewer:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/antora:z
+    working_dir: /antora

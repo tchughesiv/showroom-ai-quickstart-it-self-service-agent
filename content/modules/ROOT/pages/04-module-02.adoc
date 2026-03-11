@@ -1,0 +1,77 @@
+= Module 2: Interact with the Agent
+:navtitle: Module 2 - Interact
+:toc:
+:toc-placement: preamble
+:icons: font
+
+== Learning Objectives
+
+By the end of this module you will be able to:
+
+* Start an interactive CLI chat session with the agent
+* Complete a full laptop refresh workflow
+* Test different user scenarios
+
+== Step 1: Start Interactive Chat
+
+Connect to the Request Manager pod and start a chat session:
+
+[source,bash]
+----
+oc exec -it deploy/self-service-agent-request-manager -n $NAMESPACE -- \
+  python test/chat-responses-request-mgr.py \
+  --user-id alice.johnson@company.com
+----
+
+**Expected outcome:** Chat client starts; agent sends an initial greeting.
+
+== Step 2: Complete Laptop Refresh Workflow
+
+Follow this conversation flow:
+
+* **You:** `I need help with my laptop refresh`
+* **Expected:** Agent retrieves laptop info, checks eligibility, gives a summary.
+
+* **You:** `I would like to see available laptop options`
+* **Expected:** Agent lists four laptop options with specs and pricing for your region.
+
+* **You:** `I would like option 1, the Apple MacBook Air M2`
+* **Expected:** Agent confirms and asks for approval to create a ServiceNow ticket.
+
+* **You:** `Yes, please create the ticket`
+* **Expected:** Ticket created, ticket number shown (e.g. REQ3143724), confirmation message.
+
+* Press kbd:[Ctrl+C] twice to end the session.
+
+== Step 3: Test Different User Scenarios
+
+Run the chat with different users to see region and eligibility differences:
+
+[source,bash]
+----
+# LATAM region user
+oc exec -it deploy/self-service-agent-request-manager -n $NAMESPACE -- \
+  python test/chat-responses-request-mgr.py \
+  --user-id maria.garcia@company.com
+
+# User who may not be eligible
+oc exec -it deploy/self-service-agent-request-manager -n $NAMESPACE -- \
+  python test/chat-responses-request-mgr.py \
+  --user-id john.doe@company.com
+----
+
+== Resetting Conversation State
+
+To start a new conversation with the same user:
+
+. Type `reset`
+. Type any message (e.g. `hello`) to begin again
+
+== Module 2 Summary
+
+**What you learned:**
+* Starting a chat session with the agent
+* Completing the laptop refresh workflow
+* Testing eligibility and region-specific options
+
+**Next:** xref:05-module-03.adoc[Module 3: Evaluations and Tracing] — run evaluations and explore observability.

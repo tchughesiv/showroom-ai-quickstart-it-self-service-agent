@@ -1,0 +1,89 @@
+= Module 1: Deploy to OpenShift
+:navtitle: Module 1 - Deploy
+:toc:
+:toc-placement: preamble
+:icons: font
+
+== Learning Objectives
+
+By the end of this module you will be able to:
+
+* Clone the self-service agent quickstart and configure environment variables
+* Deploy the platform to OpenShift using Helm (Testing Mode)
+* Verify pods, routes, and services
+
+== Step 1: Clone the Repository
+
+Clone the quickstart and navigate to the project directory:
+
+[source,bash]
+----
+git clone https://github.com/rh-ai-quickstart/it-self-service-agent.git
+cd it-self-service-agent
+----
+
+*For development:* Use the dev fork at `tchughesiv/self-service-agent-blueprint` (ansible branch) as needed.
+
+**Expected outcome:** Repository cloned to local machine.
+
+== Step 2: Set Environment Variables
+
+Configure namespace and LLM connectivity:
+
+[source,bash]
+----
+export NAMESPACE=my-self-service-agent
+
+export LLM=llama-3-3-70b-instruct-w8a8
+export LLM_ID=llama-3-3-70b-instruct-w8a8
+export LLM_API_TOKEN=your-api-token
+export LLM_URL=https://your-llm-endpoint
+
+export HF_TOKEN=1234
+----
+
+Replace `your-api-token` and `https://your-llm-endpoint` with your actual LLM credentials.
+
+== Step 3: Build Images (Optional)
+
+If using pre-built images, skip to Step 4.
+
+[source,bash]
+----
+export REGISTRY=quay.io/your-org
+make build-all-images
+make push-all-images
+----
+
+== Step 4: Deploy with Helm
+
+Log in to OpenShift and deploy in **Demo Mode** (ephemeral demos, Greenmail + demo values, no Knative):
+
+[source,bash]
+----
+oc login --server=https://your-cluster:6443
+oc new-project $NAMESPACE
+make install INSTALL_MODE=demo NAMESPACE=$NAMESPACE
+----
+
+**Expected outcome:** Helm chart deployed, all pods starting.
+
+== Step 5: Verify Deployment
+
+[source,bash]
+----
+make helm-status NAMESPACE=$NAMESPACE
+oc get pods -n $NAMESPACE
+oc get routes -n $NAMESPACE
+----
+
+**Expected outcome:** All pods in `Running` state, routes created.
+
+== Module 1 Summary
+
+**What you learned:**
+* Cloning the quickstart and configuring LLM access
+* Deploying with Helm in Demo Mode
+* Verifying deployment status
+
+**Next:** xref:04-module-02.adoc[Module 2: Interact with the Agent] — test the laptop refresh workflow via CLI.

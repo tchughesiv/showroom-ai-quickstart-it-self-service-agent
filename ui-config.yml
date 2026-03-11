@@ -11,23 +11,12 @@ view_switcher:
   default_mode: split
 
 tabs:
-  # OCP Console
-  # - name: OCP Console
-  #   url: 'https://console-openshift-console.${DOMAIN}'
+  # OCP Console (${DOMAIN} from RHDP deployment; omit if not using Showroom on RHDP)
+  - name: OCP Console
+    url: 'https://console-openshift-console.${DOMAIN}'
 
-  # Single terminal
-  # - name: Bastion
-  #   path: /wetty
-  #   port: 443
-
-  # Vertical split terminals
-  # - name: Bastion
-  #   path: /wetty
-  #   port: 443
-  #   secondary_name: Bastion
-  #   secondary_path: /wetty
-  #   secondary_port: 443
-
-  # External page
-  - name: Llamastack Docs
+  # Quickstart repository and reference docs
+  - name: Quickstart Repo
+    url: 'https://github.com/rh-ai-quickstart/it-self-service-agent'
+  - name: Llama Stack Docs
     url: 'https://llama-stack.readthedocs.io/en/latest/'

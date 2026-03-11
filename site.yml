@@ -1,7 +1,7 @@
 ---
 site:
-  title: Showroom Template Demo
-  url: https://github.com/rhpds/showroom_template_nookbag
+  title: Self-Service Agent Quickstart
+  url: https://github.com/tchughesiv/showroom-ai-quickstart-it-self-service-agent
   start_page: modules::index.adoc
 
 content:
