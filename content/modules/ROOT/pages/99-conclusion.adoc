@@ -1,0 +1,52 @@
+= Conclusion and Next Steps
+:navtitle: Conclusion
+:toc:
+:toc-placement: preamble
+:icons: font
+
+== What You Accomplished
+
+In this lab you:
+
+* Deployed the IT self-service agent platform to OpenShift (Demo Mode)
+* Completed the laptop refresh flow via the test email server webmail UI
+* Ran evaluations and explored tracing (Module 3)
+
+== Recommended Next Steps
+
+=== Optional Integrations
+
+* **Slack** — Real-time user conversations. See https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/SLACK_SETUP.md[guides/SLACK_SETUP.md,window="_blank"].
+* **Email** — Asynchronous notifications. See https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/EMAIL_SETUP.md[guides/EMAIL_SETUP.md,window="_blank"].
+* **Real ServiceNow** — Connect to a live ServiceNow instance. See https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/SERVICE_NOW_BOOTSTRAP_AUTOMATED.md[SERVICE_NOW_BOOTSTRAP_AUTOMATED.md,window="_blank"] (recommended) or https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/SERVICE_NOW_BOOTSTRAP_MANUAL.md[SERVICE_NOW_BOOTSTRAP_MANUAL.md,window="_blank"].
+
+=== Customizing for Your Use Case
+
+To adapt the platform for another IT process:
+
+* Add a specialist agent for your process (e.g. PIA, RFP)
+* Update the routing agent to route to your specialist
+* Add MCP servers for your external systems
+* Create a knowledge base with your policies
+* Build evaluations for your business metrics
+
+=== Additional Resources
+
+* https://github.com/rh-ai-quickstart/it-self-service-agent[Quickstart repository,window="_blank"] — source code and guides
+* https://www.redhat.com/en/blog/manual-agentic-streamlining-it-processes-red-hat-openshift-ai[From manual to agentic,window="_blank"] — business value overview
+* https://developers.redhat.com/articles/2026/01/26/ai-quickstart-self-service-agent-it-process-automation[Part 1: AI quickstart,window="_blank"] — Overview and architecture
+* https://developers.redhat.com/articles/2026/02/09/self-service-ai-agent-slack-email-servicenow[Part 2: Slack, email & ServiceNow,window="_blank"] — Multi-channel integration and extensibility
+* https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/COMPONENT_GUIDE.md[Component Guide,window="_blank"] — architecture and component details
+* https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/DEPLOYMENT_MODE_GUIDE.md[Deployment Mode Guide,window="_blank"] — testing vs demo vs production
+* https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/EVALUATIONS_GUIDE.md[Evaluations Guide,window="_blank"] — evaluation framework details
+* https://llama-stack.readthedocs.io[Llama Stack docs,window="_blank"] — AI inference platform
+* https://langchain-ai.github.io/langgraph/[LangGraph,window="_blank"] — state machine framework
+
+=== Remove Deployment
+
+To remove the deployed quickstart and all resources from your namespace:
+
+[source,bash]
+----
+make uninstall NAMESPACE=$NAMESPACE
+----

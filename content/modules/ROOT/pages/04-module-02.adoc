@@ -1,0 +1,78 @@
+= Module 2: Interact with the Agent via Email
+:navtitle: Module 2 - Interact
+:toc:
+:toc-placement: preamble
+:icons: font
+
+== Learning Objectives
+
+By the end of this module you will be able to:
+
+* Open the webmail UI (deployed automatically with Demo Mode)
+* Complete the laptop refresh workflow via email
+* Test different user scenarios using the user dropdown
+
+== Why Email?
+
+IT workflows—approvals, follow-ups, ticket updates—often happen over email. The quickstart *meets users where they are*: email is a continuation and notification channel where conversations resume after delays and responses can be asynchronous. The same agent works across Slack, email, ServiceNow, and CLI. See https://developers.redhat.com/articles/2026/02/09/self-service-ai-agent-slack-email-servicenow[AI meets you where you are: Slack, email & ServiceNow,window="_blank"] for more.
+
+== Step 1: Open the Webmail UI
+
+Demo Mode deploys a test email server (Greenmail) with a webmail UI. At the end of Module 1, the deployment displayed a **webmail URL**. Open that URL in your browser.
+
+If you need to find it:
+
+[source,bash]
+----
+oc get routes -n $NAMESPACE | grep -i email
+----
+
+**Expected outcome:** Webmail UI opens with a user dropdown and message composer.
+
+== Step 2: Start the Conversation
+
+. Select a user from the dropdown (e.g. `alice.johnson@company.com`)
+. The subject is pre-filled with "Laptop refresh"
+. Send an initial message—e.g. `Hello` or `Help`—to get a response from the routing agent
+. Tell the agent you want a laptop refresh (e.g. `I'd like to start a laptop refresh request`)
+. Click "Send"
+
+**Expected outcome:** The routing agent responds; once you request a laptop refresh, you're handed off to the specialist agent, which returns laptop info, eligibility, and asks if you'd like to see available options.
+
+*You don't need to type these phrases exactly—they're example prompts. The agent understands natural language; follow the flow in whatever way feels natural.*
+
+== Step 3: Complete the Workflow
+
+Once the laptop refresh specialist has your session, continue in the webmail UI:
+
+* **You:** Ask to see available options (e.g. `I'd like to see available laptop options`)
+* **Expected:** Agent lists four laptop options with specs and pricing for your region (NA, EMEA, APAC, or LATAM). *LLM responses can take 10–30 seconds.*
+
+* **You:** Select a laptop (e.g. `I'd like option 1, the Apple MacBook Air M2`)
+* **Expected:** Agent confirms and asks for approval to create a ServiceNow ticket
+
+* **You:** Approve (e.g. `Yes, please create the ticket`)
+* **Expected:** Ticket created, ticket number shown (e.g. REQ3143724), confirmation message
+
+== Step 4: Test Different User Scenarios
+
+Select different users from the dropdown to see region and eligibility differences:
+
+* `alice.johnson@company.com` — NA region, eligible for refresh
+* `maria.garcia@company.com` — LATAM region, different laptop options
+* `john.doe@company.com` — may not be eligible (laptop too new)
+
+**Expected outcome:** Different laptop options by region; different eligibility results by laptop age.
+
+== Resetting Conversation State
+
+To start a fresh conversation with the same user, type `reset` in the message box and send; then send any message (e.g. `hello`) to begin again. This clears conversation history for that user.
+
+== Module 2 Summary
+
+**What you learned:**
+* Using the webmail UI to interact with the agent via email
+* Completing the laptop refresh workflow end-to-end
+* Testing eligibility and region-specific options with different users
+
+**Next:** xref:05-module-03.adoc[Module 3: Going Further] — extensibility, evals, tracing, and blog series.

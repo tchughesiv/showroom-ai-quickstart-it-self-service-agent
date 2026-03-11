@@ -1,0 +1,75 @@
+= Module 1: Deploy to OpenShift
+:navtitle: Module 1 - Deploy
+:toc:
+:toc-placement: preamble
+:icons: font
+
+== Learning Objectives
+
+By the end of this module you will be able to:
+
+* Clone the IT self-service agent quickstart and configure environment variables
+* Deploy the platform to OpenShift using Helm (Demo Mode — includes test email server)
+* Verify pods, routes, and services
+
+== Step 1: Clone the Repository
+
+Clone the quickstart from the fork that includes Demo Mode (ansible branch):
+
+[source,bash]
+----
+git clone -b ansible https://github.com/tchughesiv/self-service-agent-blueprint.git
+cd self-service-agent-blueprint
+----
+
+*Note:* Demo mode is on the ansible branch; once proven with this showroom, it will merge to the canonical https://github.com/rh-ai-quickstart/it-self-service-agent[rh-ai-quickstart/it-self-service-agent,window="_blank"] repo.
+
+**Expected outcome:** Repository cloned to local machine.
+
+== Step 2: Set Environment Variables
+
+Configure namespace and LLM connectivity:
+
+[source,bash]
+----
+export NAMESPACE=my-self-service-agent
+
+export LLM=llama-3-3-70b-instruct-w8a8
+export LLM_ID=llama-3-3-70b-instruct-w8a8
+export LLM_API_TOKEN=your-api-token
+export LLM_URL=https://your-llm-endpoint
+----
+
+Replace `your-api-token` and `https://your-llm-endpoint` with your actual LLM credentials. *HF_TOKEN* is only needed when deploying models from HuggingFace on-cluster (not for Model as a Service).
+
+== Step 3: Deploy with Helm
+
+Log in to OpenShift and deploy in **Demo Mode** (Greenmail + test email server deployed automatically, no Knative):
+
+[source,bash]
+----
+oc login --server=https://your-cluster:6443
+make install INSTALL_MODE=demo NAMESPACE=$NAMESPACE
+----
+
+**Expected outcome:** Helm chart deployed; test email server (Greenmail + webmail UI) and all pods start. Note the **webmail URL** displayed at the end — you'll use it in Module 2 to complete the laptop refresh flow via email.
+
+== Step 4: Verify Deployment
+
+[source,bash]
+----
+make helm-status NAMESPACE=$NAMESPACE
+oc get pods -n $NAMESPACE
+oc get routes -n $NAMESPACE
+----
+
+**Expected outcome:** All pods in `Running` state, routes created.
+
+== Module 1 Summary
+
+**What you learned:**
+* Cloning the quickstart and configuring LLM access
+* Deploying with Helm in Demo Mode
+* Verifying deployment status
+
+**Next:** xref:04-module-02.adoc[Module 2: Interact with the Agent] — complete the laptop refresh flow via the webmail UI.

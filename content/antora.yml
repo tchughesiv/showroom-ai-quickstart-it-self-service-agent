@@ -1,5 +1,20 @@
 name: modules
-title: Showroom Collection
+title: IT Self-Service Agent Quickstart
 version: ~
 nav:
   - modules/ROOT/nav.adoc
+
+asciidoc:
+  attributes:
+    lab_name: IT Self-Service Agent for IT Process Automation
+    guid: '%GUID%'
+    ssh_user: lab-user
+    ssh_password: changeme
+    page-pagination: true
+    page-links:
+      - url: https://github.com/tchughesiv/self-service-agent-blueprint/tree/ansible
+        text: Quickstart Repo (ansible branch)
+      - url: https://llama-stack.readthedocs.io
+        text: Llama Stack Docs
+      - url: https://langchain-ai.github.io/langgraph/
+        text: LangGraph

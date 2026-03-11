@@ -1,0 +1,89 @@
+= Module 3: Going Further — Extensibility and Production Readiness
+:navtitle: Module 3 - Going Further
+:toc:
+:toc-placement: preamble
+:icons: font
+
+== Learning Objectives
+
+By the end of this module you will understand:
+
+* How the framework extends to other IT processes and channels
+* What evaluation and tracing add for production readiness
+* Where to go for deeper technical dives
+
+== Extensibility: The Same Framework, Different Use Cases
+
+The laptop refresh agent is one example. The same architecture supports many IT processes with minimal changes:
+
+* **Privacy Impact Assessment (PIA)**
+* **RFP generation**
+* **Access request processing**
+* **Software license requests**
+
+To adapt the framework for a new use case, you:
+
+* Add a specialist agent with prompts for your process
+* Update the routing agent to hand off to your specialist
+* Add MCP servers for your external systems (ServiceNow, HR, etc.)
+* Create a knowledge base with your policies and documentation
+* Define evaluation metrics for your business requirements
+
+No changes to the core request manager, integration dispatcher, or eventing layer—only process-specific configuration.
+
+For details, see the https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/COMPONENT_GUIDE.md[Component Guide,window="_blank"].
+
+== Extensibility: Meet Users Where They Are
+
+You completed the laptop refresh flow via email. The same agent works across multiple channels without losing context:
+
+* **Slack** — Real-time conversational interface; users can start in Slack and continue by email
+* **Email** — Asynchronous updates, approvals, and follow-ups (you used the test email server)
+* **ServiceNow** — Create real tickets; integrate with existing ITSM workflows
+* **CLI** — For testing and automation (`test/chat-responses-request-mgr.py`)
+
+The design principle: *meet users where they already work*. The request manager normalizes incoming requests regardless of channel, so the agent logic stays the same. Adding a new channel (e.g. Teams, webhooks) means adding an adapter—not rewriting the agent.
+
+For integration setup, see https://developers.redhat.com/articles/2026/02/09/self-service-ai-agent-slack-email-servicenow[AI meets you where you are: Slack, email & ServiceNow,window="_blank"] and the guides for https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/SLACK_SETUP.md[Slack,window="_blank"], https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/EMAIL_SETUP.md[Email,window="_blank"], and https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/SERVICE_NOW_BOOTSTRAP_AUTOMATED.md[ServiceNow,window="_blank"].
+
+== Evaluations: Validating Non-Deterministic Systems
+
+Generative AI agents are non-deterministic—the same input can produce different outputs. Traditional unit tests are insufficient. The quickstart includes an evaluation framework that:
+
+* Validates business requirements (e.g. policy compliance, information gathering)
+* Catches regressions when you change prompts or models
+* Uses the open source DeepEval framework for multi-turn conversation metrics
+
+*To run evaluations:* From the quickstart repo, `cd evaluations/`, configure the eval LLM, and run `make eval` or `python evaluate.py`. See the https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/EVALUATIONS_GUIDE.md[Evaluations Guide,window="_blank"] for setup and metrics.
+
+== Tracing: Observability for Production
+
+Production agentic systems involve complex async flows—request manager, agent service, Llama Stack, MCP servers. Distributed tracing with OpenTelemetry shows:
+
+* Request flow across all components
+* LLM inference time (often 99%+ of request time)
+* MCP server calls and knowledge base lookups
+* Performance bottlenecks
+
+*To enable tracing:* Deploy Jaeger (`make jaeger-deploy`) or OpenShift's Tempo Stack, set `OTEL_EXPORTER_OTLP_ENDPOINT`, and redeploy. Traces appear in Jaeger UI or OpenShift's Observe → Traces. See the quickstart's tracing documentation for details.
+
+== Blog Series: Deeper Technical Dives
+
+The Red Hat Developer blog series explores what we learned building the IT self-service agent:
+
+* **Part 1:** https://developers.redhat.com/articles/2026/01/26/ai-quickstart-self-service-agent-it-process-automation[AI quickstart: Self-service agent for IT process automation,window="_blank"] — Overview and architecture
+* **Part 2:** https://developers.redhat.com/articles/2026/02/09/self-service-ai-agent-slack-email-servicenow[AI meets you where you are: Slack, email & ServiceNow,window="_blank"] — Multi-channel integration, CloudEvents, session continuity
+* **Part 3:** Prompt engineering: Big vs. small prompts (forthcoming)
+* **Part 4:** Automate AI agents with the Responses API in Llama Stack (forthcoming)
+
+These posts cover architectural trade-offs, evaluation learnings, token usage comparisons, and production patterns that apply beyond IT automation.
+
+== Module 3 Summary
+
+**What you learned:**
+* The framework extends to other IT processes by swapping specialist agents, MCP servers, and knowledge bases
+* The same agent works across Slack, email, ServiceNow, and CLI—meet users where they are
+* Evaluations and tracing are key for production readiness; guides and docs available
+* The blog series offers deeper dives on integration, prompting, and scale
+
+**Next:** xref:99-conclusion.adoc[Conclusion and Next Steps] — wrap up and recommended follow-ups.

@@ -1,0 +1,88 @@
+= Lab Overview
+:navtitle: Overview
+:toc:
+:toc-placement: preamble
+:icons: font
+
+== Business Context
+
+Many organizations want to support IT processes through generative AI–based self-service. This quickstart provides a reusable platform for building AI-driven IT process automation on Red Hat OpenShift.
+
+*Value propositions:*
+* **Reduced time** for employees to complete common requests
+* **Higher compliance** to process standards
+* **Fewer rejected requests** due to missing or incorrect information
+* **Faster ticket closure** and higher throughput
+
+== Target Audience
+
+This lab is designed for:
+
+* **IT teams** implementing AI-driven self-service solutions
+* **DevOps engineers** deploying agent-based systems
+* **Solution architects** evaluating AI automation platforms
+
+== What You'll Build
+
+By the end of this lab you will have:
+
+* An IT self-service agent platform deployed on OpenShift
+* A working laptop refresh agent with knowledge bases and MCP tools
+* Hands-on experience completing the laptop refresh flow via email (webmail UI)
+* Optional: Evaluation runs and distributed tracing
+
+== Example Use Cases
+
+IT processes suitable for this kind of automation include:
+
+* Laptop refresh requests
+* Privacy Impact Assessment (PIA)
+* RFP generation
+* Access request processing
+* Software license requests
+
+The laptop refresh use case in this lab demonstrates the pattern; you can extend it to your own processes by adding specialist agents, MCP servers, and knowledge bases.
+
+== Architecture Overview
+
+The platform includes:
+
+* *Agent Service* — LangGraph state machine, knowledge bases, specialist agents
+* *Request Manager* — Routing, session management, unified communication
+* *MCP Servers* — ServiceNow and other external integrations
+* *Evaluation Framework* — Synthetic conversations and business metrics
+* *OpenTelemetry* — Distributed tracing for observability
+
+Key request flow:
+
+[mermaid]
+....
+flowchart LR
+    subgraph User
+        U[User]
+    end
+    subgraph Channels
+        Slack[Slack]
+        Email[Email]
+        API[API/CLI]
+    end
+    RM[Request Manager]
+    RA[Routing Agent]
+    SA[Specialist Agent]
+    KB[(Knowledge Base)]
+    MCP[MCP Servers]
+    U --> Channels
+    Channels --> RM
+    RM --> RA
+    RA --> SA
+    SA --> KB
+    SA --> MCP
+....
+
+== Related Resources
+
+* https://github.com/rh-ai-quickstart/it-self-service-agent[Quickstart repository,window="_blank"] — install and code
+* https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/COMPONENT_GUIDE.md[Component Guide,window="_blank"] — architecture and components
+* https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/guides/DEPLOYMENT_MODE_GUIDE.md[Deployment Mode Guide,window="_blank"] — demo vs testing vs production
+* https://www.redhat.com/en/blog/manual-agentic-streamlining-it-processes-red-hat-openshift-ai[Blog: From manual to agentic,window="_blank"]
+* https://developers.redhat.com/articles/2026/01/26/ai-quickstart-self-service-agent-it-process-automation[Technical blog series: AI quickstart IT Self-Service Agent,window="_blank"]

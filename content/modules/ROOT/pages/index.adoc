@@ -1,94 +1,52 @@
-= What is Showroom?
-:navtitle: What is Showroom?
+= IT Self-Service Agent Quickstart Lab
+:navtitle: Lab Overview
+:toc:
+:toc-placement: preamble
+:icons: font
 
-Showroom is a web-based lab instruction platform for the https://demo.redhat.com[Red Hat Demo Platform].
-It combines rendered AsciiDoc content with embedded terminals, consoles, and interactive tools -- giving workshop and demo participants everything they need in a single browser tab.
+== What You'll Learn
 
-== What Users See
+This hands-on lab guides you through deploying and using the IT Self-Service Agent for IT process automation on Red Hat OpenShift.
 
-When a participant opens their Showroom URL they get a split-pane interface:
+By the end of this workshop you will:
 
-* **Left pane** -- step-by-step lab instructions rendered from an https://antora.org[Antora] site you author in AsciiDoc.
-* **Right pane** -- one or more tabs such as:
-** A web terminal (SSH to a bastion, containerised CLI tools, or both).
-** The OpenShift web console embedded in an iframe.
-** A VS Code editor (Code Server).
-** A VNC desktop (noVNC).
-** Any external URL you choose.
+* Deploy the IT self-service agent platform to OpenShift using Helm (Demo Mode)
+* Complete the laptop refresh flow via the test email server webmail UI
+* Understand extensibility and production patterns (evals, tracing)
+* Use distributed tracing to understand agent workflows
 
-The UI layout, tab names, and tab URLs are all controlled by a simple `ui-config.yml` file that lives in your content repository.
+*Time to complete:* 30–60 minutes (cluster and LLM ready)
 
-== How It Gets Deployed
+== What the IT Self-Service Agent Does
 
-This Ansible collection -- `agnosticd.showroom` -- is the primary way Showroom instances are deployed on the Red Hat Demo Platform.
-Depending on the environment type, you use one of two roles:
+The quickstart implements a **laptop refresh** IT process. Employees can:
 
-[cols="1,3",options="header"]
-|===
-|Role |Use when...
+* Check their current laptop and eligibility for refresh
+* Browse available laptop options by region
+* Submit a refresh request that creates a ServiceNow ticket
 
-|`ocp4_workload_showroom`
-|Your lab runs on an OpenShift 4 cluster.
-The role deploys Showroom as a pod using a Helm chart, complete with content rendering, terminals, and an OpenShift `Route`.
+The platform integrates with knowledge bases, MCP (Model Context Protocol) servers, and external systems like ServiceNow. The same framework can be extended to other IT processes: PIA, RFP generation, access requests, and more.
 
-|`vm_workload_showroom`
-|Your lab runs on a VM (RHEL, Fedora, etc.).
-The role deploys Showroom with rootless Podman, Traefik for TLS, and systemd for lifecycle management.
-|===
+== Lab Structure
 
-Both roles follow the same basic flow:
+. *xref:01-overview.adoc[Overview]* — Business context, audience, and learning objectives
+. *xref:02-details.adoc[Requirements and Setup]* — Prerequisites and environment setup
+. *xref:03-module-01.adoc[Module 1: Deploy to OpenShift]* — Clone, configure, and deploy with Helm
+. *xref:04-module-02.adoc[Module 2: Interact with the Agent]* — Complete the laptop refresh flow via email (webmail UI)
+. *xref:05-module-03.adoc[Module 3: Going Further]* — Extensibility, evals, tracing, and blog series
+. *xref:99-conclusion.adoc[Conclusion and Next Steps]* — Summary and recommended follow-ups
 
-. Clone your Antora content repository.
-. Inject runtime variables (credentials, hostnames, GUIDs) as AsciiDoc attributes.
-. Render the content to HTML.
-. Serve the content alongside the terminal and tab services you configured.
-. Publish the final URL back to the user.
+== Key Technologies
 
-== Key Concepts
-
-Content repository::
-A Git repo containing your AsciiDoc lab instructions, structured as an Antora component.
-You typically fork https://github.com/rhpds/showroom_template_nookbag[showroom_template_nookbag] and add your own pages.
-See xref:content-repo.adoc[].
-
-AgnosticV catalog item::
-The YAML configuration in the https://github.com/rhpds/agnosticv[agnosticv] repository that ties your content repo to an environment on the Red Hat Demo Platform.
-See xref:agnosticv-config.adoc[].
-
-User data::
-A set of key-value pairs (hostnames, passwords, URLs) written by infrastructure roles during provisioning and automatically injected into your content as Antora attributes.
-See xref:user-data.adoc[].
-
-UI configuration::
-A `ui-config.yml` file in your content repo that defines the tabs, layout width, and dynamic URLs shown alongside your lab instructions.
-See xref:ui-config.adoc[].
+* *Llama Stack* — AI inference for Llama models
+* *LangGraph* — State machine for agent conversations
+* *MCP Servers* — Interface to external systems (e.g. ServiceNow)
+* *RAG Knowledge Bases* — Policy and process retrieval
+* *OpenTelemetry* — Distributed tracing
+* *OpenShift / Kubernetes* — Deployment platform
 
 == Where to Start
 
-[cols="1,3",options="header"]
-|===
-|Goal |Page
+This lab uses **Demo Mode** deployment (`make install INSTALL_MODE=demo`) — deploys the test email server (Greenmail + webmail UI) automatically; no Knative operators required.
 
-|Get a Showroom lab running quickly
-|xref:quick-start.adoc[]
-
-|Create or structure a content repo
-|xref:content-repo.adoc[]
-
-|Wire up an AgnosticV catalog item
-|xref:agnosticv-config.adoc[]
-
-|Understand the full architecture
-|xref:architecture.adoc[]
-
-|Contribute to Showroom itself
-|xref:contributing.adoc[]
-|===
-
-== Related Projects
-
-* https://github.com/agnosticd/showroom[agnosticd.showroom collection] -- this Ansible collection (you are here).
-* https://github.com/rhpds/showroom_template_nookbag[showroom_template_nookbag] -- the recommended content repo template.
-* https://github.com/rhpds/showroom-deployer[showroom-deployer] -- Helm charts that power OCP deployments.
-* https://github.com/rhpds/showroom-images[showroom-images] -- container images (content server, terminals, Antora, etc.).
-* https://github.com/rhpds/nookbag[nookbag] -- the zero-touch UI bundle.
+If you have not yet reviewed requirements and setup, start with xref:02-details.adoc[Requirements and Setup]. If your environment is ready, proceed to xref:03-module-01.adoc[Module 1: Deploy to OpenShift].
