@@ -42,3 +42,5 @@ podman-compose up
 Open http://localhost:8080 after the build completes.
 
 See the https://rhpds.github.io/showroom_template_nookbag/modules/content-repo.html[Content Repository] guide for directory layout and dev mode.
+
+test
