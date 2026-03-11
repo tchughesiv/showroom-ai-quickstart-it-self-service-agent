@@ -15,7 +15,7 @@ By the end of this workshop you will:
 * Understand extensibility and production patterns (evals, tracing)
 * Use distributed tracing to understand agent workflows
 
-*Time to complete:* 60–180 minutes (depending on deployment mode and optional modules)
+*Time to complete:* 30–60 minutes (cluster and LLM ready)
 
 == What the IT Self-Service Agent Does
 
