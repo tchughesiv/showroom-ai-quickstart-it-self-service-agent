@@ -8,14 +8,13 @@
 
 === LLM Access
 
-The quickstart requires access to a Llama 3 70B–capable model. For Demo Mode, use *Model as a Service* via `LLM_URL` and `LLM_API_TOKEN` — point to your existing LLM endpoint (OpenShift AI, cloud API, or similar).
+The quickstart requires access to a Llama 3 70B–capable model. For Demo Mode, use *Model as a Service* via `LLM_URL` and `LLM_API_TOKEN` — point to your existing LLM endpoint (OpenShift AI, cloud API, or similar). This keeps the cluster focused on the agent platform; no on-cluster LLM resources needed.
 
-If you do not have an endpoint:
-
-* Use the https://github.com/rh-ai-quickstart/ai-architecture-charts/tree/main/llm-service[LLM Service Helm Chart,window="_blank"] to deploy `meta-llama/Meta-Llama-3-70B` on-cluster
-* Or follow the https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/docs/alternate-journeys/scout-only.md[Scout-only alternate journey,window="_blank"] if you have Llama-4-Scout-17B-16E instead
+*If you do not have an endpoint* and must deploy on-cluster: the https://github.com/rh-ai-quickstart/ai-architecture-charts/tree/main/llm-service[LLM Service Helm Chart,window="_blank"] or https://github.com/rh-ai-quickstart/it-self-service-agent/blob/main/docs/alternate-journeys/scout-only.md[Scout-only journey,window="_blank"] add significant hardware on top of the agent requirements below — see those docs for model-specific resources.
 
 === Hardware Requirements
+
+*Agent platform only* (LLM via `LLM_URL`):
 
 * CPU: 10–12 cores
 * Memory: 10 Gi
