@@ -29,6 +29,9 @@ oc get routes -n $NAMESPACE | grep -i email
 
 **Expected outcome:** Webmail UI opens with a user dropdown and message composer.
 
+// Screenshot placeholder — add webmail-ui.png to content/modules/ROOT/images/
+image::webmail-ui.png[Webmail UI with user dropdown and message composer,align="center",width=600]
+
 == Step 2: Start the Conversation
 
 . Select a user from the dropdown (e.g. `alice.johnson@company.com`)
@@ -53,6 +56,9 @@ Once the laptop refresh specialist has your session, continue in the webmail UI:
 
 * **You:** Approve (e.g. `Yes, please create the ticket`)
 * **Expected:** Ticket created, ticket number shown (e.g. REQ3143724), confirmation message
+
+// Screenshot placeholder — add laptop-refresh-success.png to content/modules/ROOT/images/
+image::laptop-refresh-success.png[Agent response showing ticket created,align="center",width=600]
 
 == Step 4: Test Different User Scenarios
 
