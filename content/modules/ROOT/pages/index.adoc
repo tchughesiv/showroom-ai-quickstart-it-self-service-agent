@@ -10,8 +10,8 @@ This hands-on lab guides you through deploying and using the IT Self-Service Age
 
 By the end of this workshop you will:
 
-* Deploy the IT self-service agent platform to OpenShift using Helm
-* Interact with the laptop refresh agent through the CLI
+* Deploy the IT self-service agent platform to OpenShift using Helm (Demo Mode)
+* Complete the laptop refresh flow via the test email server webmail UI
 * Run evaluations to validate agent quality
 * Use distributed tracing to understand agent workflows
 
@@ -32,7 +32,7 @@ The platform integrates with knowledge bases, MCP (Model Context Protocol) serve
 . *xref:01-overview.adoc[Overview]* — Business context, audience, and learning objectives
 . *xref:02-details.adoc[Requirements and Setup]* — Prerequisites and environment setup
 . *xref:03-module-01.adoc[Module 1: Deploy to OpenShift]* — Clone, configure, and deploy with Helm
-. *xref:04-module-02.adoc[Module 2: Interact with the Agent]* — Test the laptop refresh workflow via CLI
+. *xref:04-module-02.adoc[Module 2: Interact with the Agent]* — Complete the laptop refresh flow via email (webmail UI)
 . *xref:05-module-03.adoc[Module 3: Evaluations and Tracing]* — Run evaluations and explore OpenTelemetry
 . *xref:99-conclusion.adoc[Conclusion and Next Steps]* — Summary and recommended follow-ups
 
@@ -47,6 +47,6 @@ The platform integrates with knowledge bases, MCP (Model Context Protocol) serve
 
 == Where to Start
 
-This lab uses **Demo Mode** deployment (`make install INSTALL_MODE=demo`) — no Knative operators required.
+This lab uses **Demo Mode** deployment (`make install INSTALL_MODE=demo`) — deploys the test email server (Greenmail + webmail UI) automatically; no Knative operators required.
 
 If you have not yet reviewed requirements and setup, start with xref:02-details.adoc[Requirements and Setup]. If your environment is ready, proceed to xref:03-module-01.adoc[Module 1: Deploy to OpenShift].

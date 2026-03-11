@@ -9,20 +9,20 @@
 By the end of this module you will be able to:
 
 * Clone the IT self-service agent quickstart and configure environment variables
-* Deploy the platform to OpenShift using Helm (Testing Mode)
+* Deploy the platform to OpenShift using Helm (Demo Mode — includes test email server)
 * Verify pods, routes, and services
 
 == Step 1: Clone the Repository
 
-Clone the quickstart and navigate to the project directory:
+Clone the quickstart from the fork that includes Demo Mode (ansible branch):
 
 [source,bash]
 ----
-git clone https://github.com/rh-ai-quickstart/it-self-service-agent.git
-cd it-self-service-agent
+git clone -b ansible https://github.com/tchughesiv/self-service-agent-blueprint.git
+cd self-service-agent-blueprint
 ----
 
-*For development:* Use the dev fork at `tchughesiv/self-service-agent-blueprint` (ansible branch) as needed.
+*Note:* Demo mode is on the ansible branch; once proven with this showroom, it will merge to the canonical https://github.com/rh-ai-quickstart/it-self-service-agent[rh-ai-quickstart/it-self-service-agent] repo.
 
 **Expected outcome:** Repository cloned to local machine.
 
@@ -57,7 +57,7 @@ make push-all-images
 
 == Step 4: Deploy with Helm
 
-Log in to OpenShift and deploy in **Demo Mode** (ephemeral demos, Greenmail + demo values, no Knative):
+Log in to OpenShift and deploy in **Demo Mode** (Greenmail + test email server deployed automatically, no Knative):
 
 [source,bash]
 ----
@@ -66,7 +66,7 @@ oc new-project $NAMESPACE
 make install INSTALL_MODE=demo NAMESPACE=$NAMESPACE
 ----
 
-**Expected outcome:** Helm chart deployed, all pods starting.
+**Expected outcome:** Helm chart deployed; test email server (Greenmail + webmail UI) and all pods start. Note the **webmail URL** displayed at the end — you'll use it in Module 2 to complete the laptop refresh flow via email.
 
 == Step 5: Verify Deployment
 
@@ -86,4 +86,4 @@ oc get routes -n $NAMESPACE
 * Deploying with Helm in Demo Mode
 * Verifying deployment status
 
-**Next:** xref:04-module-02.adoc[Module 2: Interact with the Agent] — test the laptop refresh workflow via CLI.
+**Next:** xref:04-module-02.adoc[Module 2: Interact with the Agent] — complete the laptop refresh flow via the webmail UI.

@@ -8,8 +8,8 @@
 
 In this lab you:
 
-* Deployed the IT self-service agent platform to OpenShift
-* Interacted with the laptop refresh agent via CLI
+* Deployed the IT self-service agent platform to OpenShift (Demo Mode)
+* Completed the laptop refresh flow via the test email server webmail UI
 * Ran evaluations and explored tracing (Module 3)
 
 == Recommended Next Steps

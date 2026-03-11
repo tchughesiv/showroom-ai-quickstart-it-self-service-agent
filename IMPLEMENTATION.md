@@ -3,7 +3,7 @@
 This document tracks implementation progress for the showroom content repository that accompanies the IT Self-Service Agent quickstart.
 
 **Canonical quickstart:** [rh-ai-quickstart/it-self-service-agent](https://github.com/rh-ai-quickstart/it-self-service-agent)  
-**Dev/fork (this showroom):** [tchughesiv/self-service-agent-blueprint](https://github.com/tchughesiv/self-service-agent-blueprint/tree/ansible) — used for development only.
+**Fork for this showroom:** [tchughesiv/self-service-agent-blueprint](https://github.com/tchughesiv/self-service-agent-blueprint/tree/ansible) (ansible branch) — Demo Mode lives here today; will merge to canonical once proven.
 
 ---
 

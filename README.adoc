@@ -6,11 +6,11 @@ Lab content for the *Automate IT Processes with IT Self-Service Agents* quicksta
 
 This Antora-based showroom provides hands-on lab instructions for:
 
-* Deploying the IT self-service agent platform on OpenShift
-* Interacting with the laptop refresh agent via CLI
+* Deploying the IT self-service agent platform on OpenShift (Demo Mode)
+* Completing the laptop refresh flow via the test email server webmail UI
 * Running evaluations and tracing agent workflows
 
-The install and quickstart code lives in https://github.com/rh-ai-quickstart/it-self-service-agent[rh-ai-quickstart/it-self-service-agent]. This showroom uses **Demo Mode** (`make install INSTALL_MODE=demo`).
+The install and quickstart code lives in the https://github.com/tchughesiv/self-service-agent-blueprint/tree/ansible[fork (ansible branch)] — Demo Mode is available there; it will merge to https://github.com/rh-ai-quickstart/it-self-service-agent[rh-ai-quickstart/it-self-service-agent] once proven.
 
 == Quick Start
 

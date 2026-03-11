@@ -28,7 +28,7 @@ By the end of this lab you will have:
 
 * An IT self-service agent platform deployed on OpenShift
 * A working laptop refresh agent with knowledge bases and MCP tools
-* Hands-on experience interacting with the agent via CLI
+* Hands-on experience completing the laptop refresh flow via email (webmail UI)
 * Optional: Evaluation runs and distributed tracing
 
 == Example Use Cases

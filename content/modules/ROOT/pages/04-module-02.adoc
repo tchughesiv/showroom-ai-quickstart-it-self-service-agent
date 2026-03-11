@@ -1,4 +1,4 @@
-= Module 2: Interact with the Agent
+= Module 2: Interact with the Agent via Email
 :navtitle: Module 2 - Interact
 :toc:
 :toc-placement: preamble
@@ -8,70 +8,64 @@
 
 By the end of this module you will be able to:
 
-* Start an interactive CLI chat session with the agent
-* Complete a full laptop refresh workflow
-* Test different user scenarios
+* Open the webmail UI (deployed automatically with Demo Mode)
+* Complete the laptop refresh workflow via email
+* Test different user scenarios using the user dropdown
 
-== Step 1: Start Interactive Chat
+== Step 1: Open the Webmail UI
 
-Connect to the Request Manager pod and start a chat session:
+Demo Mode deploys a test email server (Greenmail) with a webmail UI. At the end of Module 1, the deployment displayed a **webmail URL**. Open that URL in your browser.
+
+If you need to find it:
 
 [source,bash]
 ----
-oc exec -it deploy/self-service-agent-request-manager -n $NAMESPACE -- \
-  python test/chat-responses-request-mgr.py \
-  --user-id alice.johnson@company.com
+oc get routes -n $NAMESPACE | grep -i email
 ----
 
-**Expected outcome:** Chat client starts; agent sends an initial greeting.
+**Expected outcome:** Webmail UI opens with a user dropdown and message composer.
 
-== Step 2: Complete Laptop Refresh Workflow
+== Step 2: Start the Laptop Refresh Flow
 
-Follow this conversation flow:
+. Select a user from the dropdown (e.g. `alice.johnson@company.com`)
+. The subject is pre-filled with "Laptop refresh"
+. In the message box, type: `Hi, I'd like to start a laptop refresh request`
+. Click "Send"
 
-* **You:** `I need help with my laptop refresh`
-* **Expected:** Agent retrieves laptop info, checks eligibility, gives a summary.
+**Expected outcome:** Agent responds with laptop info, eligibility summary, and asks if you'd like to see available options.
 
-* **You:** `I would like to see available laptop options`
-* **Expected:** Agent lists four laptop options with specs and pricing for your region.
+== Step 3: Complete the Workflow
 
-* **You:** `I would like option 1, the Apple MacBook Air M2`
-* **Expected:** Agent confirms and asks for approval to create a ServiceNow ticket.
+Continue the conversation in the webmail UI:
+
+* **You:** `I'd like to see available laptop options`
+* **Expected:** Agent lists four laptop options with specs and pricing for your region (NA, EMEA, APAC, or LATAM)
+
+* **You:** `I'd like option 1, the Apple MacBook Air M2`
+* **Expected:** Agent confirms and asks for approval to create a ServiceNow ticket
 
 * **You:** `Yes, please create the ticket`
-* **Expected:** Ticket created, ticket number shown (e.g. REQ3143724), confirmation message.
+* **Expected:** Ticket created, ticket number shown (e.g. REQ3143724), confirmation message
 
-* Press kbd:[Ctrl+C] twice to end the session.
+== Step 4: Test Different User Scenarios
 
-== Step 3: Test Different User Scenarios
+Select different users from the dropdown to see region and eligibility differences:
 
-Run the chat with different users to see region and eligibility differences:
+* `alice.johnson@company.com` — NA region, eligible for refresh
+* `maria.garcia@company.com` — LATAM region, different laptop options
+* `john.doe@company.com` — may not be eligible (laptop too new)
 
-[source,bash]
-----
-# LATAM region user
-oc exec -it deploy/self-service-agent-request-manager -n $NAMESPACE -- \
-  python test/chat-responses-request-mgr.py \
-  --user-id maria.garcia@company.com
-
-# User who may not be eligible
-oc exec -it deploy/self-service-agent-request-manager -n $NAMESPACE -- \
-  python test/chat-responses-request-mgr.py \
-  --user-id john.doe@company.com
-----
+**Expected outcome:** Different laptop options by region; different eligibility results by laptop age.
 
 == Resetting Conversation State
 
-To start a new conversation with the same user:
-
-. Type `reset`
-. Type any message (e.g. `hello`) to begin again
+To start a fresh conversation with the same user, type `reset` in the message box and send; then send any message (e.g. `hello`) to begin again. This clears conversation history for that user.
 
 == Module 2 Summary
 
 **What you learned:**
-* Starting a chat session with the agent
-* Completing the laptop refresh workflow
-* Testing eligibility and region-specific options
+* Using the webmail UI to interact with the agent via email
+* Completing the laptop refresh workflow end-to-end
+* Testing eligibility and region-specific options with different users
 
 **Next:** xref:05-module-03.adoc[Module 3: Evaluations and Tracing] — run evaluations and explore observability.

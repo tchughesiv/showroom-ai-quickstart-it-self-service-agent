@@ -12,8 +12,8 @@ asciidoc:
     ssh_password: changeme
     page-pagination: true
     page-links:
-      - url: https://github.com/rh-ai-quickstart/it-self-service-agent
-        text: Quickstart Repository
+      - url: https://github.com/tchughesiv/self-service-agent-blueprint/tree/ansible
+        text: Quickstart Repo (ansible branch)
       - url: https://llama-stack.readthedocs.io
         text: Llama Stack Docs
       - url: https://langchain-ai.github.io/langgraph/
