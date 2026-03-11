@@ -32,8 +32,8 @@ The quickstart requires access to a Llama 3 70B–capable model. For Demo Mode, 
 
 === Cluster Requirements
 
-* **Demo Mode** (used by this showroom): OpenShift/Kubernetes — no special operators
-* **Testing Mode:** Mock Eventing, no Knative
+* **Demo Mode** (used by this showroom): OpenShift/Kubernetes, mock eventing, no Knative; adds Greenmail (test email server)
+* **Testing Mode:** Same baseline — mock eventing, no Knative; no Greenmail (for CI/dev)
 * **Production Mode:** OpenShift 4.17.0+ with:
 ** OpenShift AI
 ** Serverless Operator
