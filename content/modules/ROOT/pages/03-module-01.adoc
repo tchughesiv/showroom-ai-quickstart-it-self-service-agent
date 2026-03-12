@@ -14,15 +14,15 @@ By the end of this module you will be able to:
 
 == Step 1: Clone the Repository
 
-Clone the quickstart from the fork that includes Demo Mode (ansible branch):
+Clone the quickstart from the canonical repo (dev branch for now; use main once ready):
 
 [source,bash]
 ----
-git clone -b ansible https://github.com/tchughesiv/self-service-agent-blueprint.git
-cd self-service-agent-blueprint
+git clone -b dev https://github.com/rh-ai-quickstart/it-self-service-agent.git
+cd it-self-service-agent
 ----
 
-*Note:* Demo mode is on the ansible branch; once proven with this showroom, it will merge to the canonical https://github.com/rh-ai-quickstart/it-self-service-agent[rh-ai-quickstart/it-self-service-agent,window="_blank"] repo.
+*Note:* Using `dev` branch temporarily; switch to `main` when Demo Mode is fully merged.
 
 **Expected outcome:** Repository cloned to local machine.
 

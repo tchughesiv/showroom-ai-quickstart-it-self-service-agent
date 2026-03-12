@@ -126,7 +126,7 @@ The showroom content is in good shape and aligns with the IT Self-Service Agent 
 | Item | Value |
 |------|-------|
 | Install mode | Demo (`make install INSTALL_MODE=demo`) |
-| Clone source | tchughesiv/self-service-agent-blueprint (ansible branch) |
+| Clone source | rh-ai-quickstart/it-self-service-agent (dev branch; main when ready) |
 | Core flow | Deploy → Interact via webmail → Going Further |
 | Time to complete | 30–60 minutes |
 | External links | Open in new tab |

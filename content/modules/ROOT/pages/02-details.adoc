@@ -51,7 +51,7 @@ The quickstart requires access to a Llama 3 70B–capable model. For Demo Mode, 
 
 □ **OpenShift access** — Test `oc login` and `oc whoami`
 □ **LLM endpoint** — API URL and token ready
-□ **Repository cloned** — `tchughesiv/self-service-agent-blueprint` (ansible branch) — Demo Mode lives here
+□ **Repository cloned** — `rh-ai-quickstart/it-self-service-agent` (dev branch for now; main when ready)
 □ **Tools installed** — Helm, oc, kubectl (Podman only if building images)
 □ **Namespace ready** — `make install` creates it; or run `oc new-project my-agent-namespace` first if preferred
 

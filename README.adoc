@@ -10,7 +10,7 @@ This Antora-based showroom provides hands-on lab instructions for:
 * Completing the laptop refresh flow via the test email server webmail UI
 * Running evaluations and tracing agent workflows
 
-The install and quickstart code lives in the https://github.com/tchughesiv/self-service-agent-blueprint/tree/ansible[fork (ansible branch)] — Demo Mode is available there; it will merge to https://github.com/rh-ai-quickstart/it-self-service-agent[rh-ai-quickstart/it-self-service-agent] once proven.
+The install and quickstart code lives in https://github.com/rh-ai-quickstart/it-self-service-agent[rh-ai-quickstart/it-self-service-agent] — use the `dev` branch for now; switch to `main` when Demo Mode is fully merged.
 
 == Quick Start
 

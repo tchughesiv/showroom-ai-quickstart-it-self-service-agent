@@ -70,7 +70,7 @@ workloads:
 # -------------------------------------------------------------------
 # Workload: ocp4_workload_showroom
 # -------------------------------------------------------------------
-ocp4_workload_showroom_content_git_repo: https://github.com/tchughesiv/showroom-ai-quickstart-it-self-service-agent
+ocp4_workload_showroom_content_git_repo: https://github.com/tchughesiv/showroom-ai-quickstart-it-self-service-agent   # or rh-ai-quickstart after org move
 ocp4_workload_showroom_content_git_repo_ref: main
 ocp4_workload_showroom_content_antora_playbook: site.yml
 
@@ -177,23 +177,22 @@ site:
 
 ### 2.3 Update Clone Instructions (Content Repo)
 
-When the quickstart merges Demo Mode to canonical, update:
+Currently using `rh-ai-quickstart/it-self-service-agent` (dev branch). When Demo Mode is fully merged to main, update:
 
-- `03-module-01.adoc` — change clone URL from `tchughesiv/self-service-agent-blueprint` (ansible branch) to `rh-ai-quickstart/it-self-service-agent` (main)
-- `02-details.adoc` — Pre-Workshop Checklist, repo reference
-- `antora.yml` — page-links `Quickstart Repo` URL
-- `ui-config.yml` — Quickstart Repo tab URL
-- `README.adoc` — fork note
-- `IMPLEMENTATION.md` — canonical vs fork references
+- `03-module-01.adoc` — change clone from `-b dev` to `-b main` (or remove `-b` for default)
+- `02-details.adoc` — Pre-Workshop Checklist: "main when ready" → "main"
+- `antora.yml` — page-links `Quickstart Repo` URL: `/tree/dev` → `/tree/main`
+- `ui-config.yml` — Quickstart Repo tab: `/tree/dev` → `/tree/main`
+- `README.adoc` — remove "dev branch for now" note
+- `IMPLEMENTATION.md` — "dev branch; main when ready" → "main"
 
-### 2.4 Search and Replace
+### 2.4 Search and Replace (when switching to main)
 
 Run a grep for:
-- `tchughesiv/self-service-agent-blueprint`
-- `tchughesiv/showroom-ai-quickstart-it-self-service-agent`
-- `ansible` (branch name)
+- `rh-ai-quickstart/it-self-service-agent` with `/tree/dev`
+- "dev branch" / "main when ready"
 
-Update to canonical URLs and `main` branch where appropriate.
+Update to `main` branch and remove temporary notes where appropriate.
 
 ---
 
