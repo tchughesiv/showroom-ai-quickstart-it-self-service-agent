@@ -15,8 +15,8 @@ tabs:
   - name: OCP Console
     url: 'https://console-openshift-console.${DOMAIN}'
 
-  # Quickstart (fork with Demo Mode on ansible branch)
+  # Quickstart (dev branch for now; main when ready)
   - name: Quickstart Repo
-    url: 'https://github.com/tchughesiv/self-service-agent-blueprint/tree/ansible'
+    url: 'https://github.com/rh-ai-quickstart/it-self-service-agent/tree/dev'
   - name: Llama Stack Docs
     url: 'https://llama-stack.readthedocs.io/en/latest/'

@@ -2,8 +2,7 @@
 
 This document tracks implementation progress for the showroom content repository that accompanies the IT Self-Service Agent quickstart.
 
-**Canonical quickstart:** [rh-ai-quickstart/it-self-service-agent](https://github.com/rh-ai-quickstart/it-self-service-agent)  
-**Fork for this showroom:** [tchughesiv/self-service-agent-blueprint](https://github.com/tchughesiv/self-service-agent-blueprint/tree/ansible) (ansible branch) — Demo Mode lives here today; will merge to canonical once proven.
+**Quickstart:** [rh-ai-quickstart/it-self-service-agent](https://github.com/rh-ai-quickstart/it-self-service-agent) (dev branch for now; main when ready)
 
 ---
 
@@ -144,7 +143,7 @@ Open http://localhost:8080
 ### Key Repositories
 - **This repo:** Showroom content (Antora/AsciiDoc)
 - **Canonical quickstart:** https://github.com/rh-ai-quickstart/it-self-service-agent
-- **Dev fork:** https://github.com/tchughesiv/self-service-agent-blueprint (ansible branch) — for development only
+- **Quickstart:** https://github.com/rh-ai-quickstart/it-self-service-agent (dev branch; main when ready)
 - **Template:** https://github.com/rhpds/showroom_template_nookbag
 - **Skills:** https://github.com/rhpds/rhdp-skills-marketplace
 
