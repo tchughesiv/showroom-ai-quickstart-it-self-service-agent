@@ -9,7 +9,7 @@ The Showroom platform clones, builds, and serves this content at runtime.
 The recommended starting point is https://github.com/rhpds/showroom_template_nookbag[showroom_template_nookbag].
 
 . In GitHub, click **Use this template** to create a new repository.
-Suggested naming: `showroom_<lab-name>` (for example `showroom_my-ansible-workshop`).
+Suggested naming: `<lab-name>-showroom` (for example `my-ansible-workshop-showroom`).
 . Clone your new repo locally.
 . Replace the sample pages in `content/modules/ROOT/pages/` with your own content.
 

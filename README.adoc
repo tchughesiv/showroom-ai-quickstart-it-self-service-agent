@@ -1,34 +1,57 @@
-= Showroom Template
+= IT Self-Service Agent Quickstart Showroom
 
-A template for creating Red Hat Showroom lab guides and demo content, built with https://antora.org[Antora].
+Lab content for the *Automate IT Processes with IT Self-Service Agents* quickstart — AI-driven IT process automation using Red Hat OpenShift AI, Llama Stack, LangGraph, and MCP servers.
 
-* 0% cruft
-* Red Hat Demo Platform UI Bundle default
-* Dev Mode extension that displays the asciidoc attributes you have to work with
+== Content Repo
 
-== Documentation
+This Antora-based showroom provides hands-on lab instructions for:
 
-Full documentation — getting started, content structure, configuration, local development, and AI-assisted content creation — is available at:
+* Understanding the IT self-service agent architecture (assumes a provisioned Demo Mode environment)
+* Completing the laptop refresh flow via the test email UI (Demo Mode uses Greenmail for in-cluster test mail)
+* Going further with extensibility, evaluations, and tracing (see lab modules)
 
-https://rhpds.github.io/showroom_template_nookbag/
+The install and quickstart code lives in https://github.com/rh-ai-quickstart/it-self-service-agent[rh-ai-quickstart/it-self-service-agent].
+
+== Pinning quickstart GitHub links
+
+Lab pages resolve quickstart URLs from AsciiDoc attributes in `content/antora.yml`:
+
+* `quickstart_repo_url` — repository base (typically unchanged)
+* `quickstart_git_ref` — branch or tag used in every `.../blob/{ref}/...` link in the lab nav pages
+
+When you cut a quickstart release, set `quickstart_git_ref` to that tag (for example `v1.2.0`), then update the **Quickstart Repo** tab URL in `ui-config.yml` and the `page-links` entry in the same `antora.yml` so the `/tree/...` segment matches. Antora does not expand attributes inside those YAML URL strings.
+
+On RHDP, you can override `quickstart_git_ref` via Showroom `user_data` (same key) so a catalog item points at a different tag without forking this repo—see the https://rhpds.github.io/showroom_template_nookbag/modules/user-data.html[user data] flow for your deployment.
 
 == Quick Start
 
-. https://github.com/rhpds/showroom_template_nookbag/generate[Create a repo from this template] (suggested naming: `<lab-name>-showroom`)
-. Clone your new repo and preview locally:
+. Clone this repo and preview locally:
 +
 [source,sh]
 ----
-podman run --rm --name antora -v $PWD:/antora -p 8080:8080 -i -t ghcr.io/juliaaano/antora-viewer
+podman run --rm --name antora -v $PWD:/antora:z -p 8080:8080 -i -t ghcr.io/juliaaano/antora-viewer
 ----
 +
-On SELinux systems, append `:z` to the volume mount.
+(On non-SELinux systems, omit `:z`.)
 
 . Edit content in `content/modules/ROOT/pages/`
-. See the https://rhpds.github.io/showroom_template_nookbag/modules/content-repo.html[Content Repository] docs for directory layout, Podman Compose with live reload, dev mode, and more.
 
-== Create Content with AI
+== Local Development
 
-The https://github.com/rhpds/rhdp-skills-marketplace[RHDP Skills Marketplace] provides skills for Cursor IDE and Claude Code that generate labs, demos, and validate content against Red Hat standards.
+*Option 1 — single run:*
+[source,sh]
+----
+podman run --rm --name antora -v $PWD:/antora:z -p 8080:8080 -i -t ghcr.io/juliaaano/antora-viewer
+----
+
+*Option 2 — podman-compose (live reload):*
+[source,sh]
+----
+podman-compose up
+----
+
+Open http://localhost:8080 after the build completes.
+
+See the https://rhpds.github.io/showroom_template_nookbag/modules/content-repo.html[Content Repository] guide for directory layout and dev mode.
 
 See the https://rhpds.github.io/showroom_template_nookbag/modules/content-repo.html#_creating_content_with_ai_tools[AI Tools documentation] for details.
