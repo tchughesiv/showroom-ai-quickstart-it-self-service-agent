@@ -1,5 +1,5 @@
 name: modules
-title: Showroom Collection
+title: IT Self-Service Agent Quickstart
 version: ~
 nav:
   - modules/ROOT/nav.adoc
@@ -9,10 +9,24 @@ asciidoc:
     experimental: true
     page-pagination: true
     showroom-collection-version: v1.5.6
-    guid: abc123
+    lab_name: IT Self-Service Agent for IT Process Automation
+    guid: '%GUID%'
+    # Apps ingress domain (e.g. apps.cluster-….rhdp.net). RHDP user_data often uses this key; %DOMAIN% may be merged at deploy like %GUID%.
+    openshift_cluster_ingress_domain: '%DOMAIN%'
+    ssh_user: lab-user
+    ssh_password: changeme
     bastion_public_hostname: bastion.abc123.ocpv00.rhdp.net
     bastion_ssh_user_name: lab-user
     bastion_ssh_password: password
-    ssh_user: lab-user
     openshift_console_url: https://console-openshift-console.apps.cluster-abc123.ocpv00.rhdp.net
-    openshift_cluster_ingress_domain: apps.cluster-abc123.ocpv00.rhdp.net
+    # Pin all quickstart GitHub links (branch or tag). Sync Quickstart Repo tab in ui-config.yml and page-links url below when you change this.
+    quickstart_repo_url: https://github.com/rh-ai-quickstart/it-self-service-agent
+    quickstart_git_ref: v0.0.11
+    page-links:
+      # Sync path segment with quickstart_git_ref above (Antora does not substitute attributes here).
+      - url: https://github.com/rh-ai-quickstart/it-self-service-agent/tree/v0.0.11
+        text: Quickstart Repo
+      - url: https://llama-stack.readthedocs.io
+        text: Llama Stack Docs
+      - url: https://langchain-ai.github.io/langgraph/
+        text: LangGraph

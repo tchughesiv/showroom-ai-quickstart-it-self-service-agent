@@ -1,0 +1,151 @@
+= Architecture and platform overview
+:navtitle: Architecture
+:toc:
+:toc-placement: preamble
+:icons: font
+
+This page explains *what* the IT Self-Service Agent is, *how* the pieces fit together, and *why* the design scales to other IT processes. The hands-on lab assumes you already have a **provisioned environment** (for example, from Red Hat Demo Platform or your team’s OpenShift namespace)—use your environment’s instructions for URLs, credentials, and namespace details.
+
+== Business context
+
+Many organizations want to support IT processes through generative AI–based self-service. This quickstart provides a reusable platform for building AI-driven IT process automation on Red Hat OpenShift.
+
+*Value propositions:*
+* **Reduced time** for employees to complete common requests
+* **Higher compliance** to process standards
+* **Fewer rejected requests** due to missing or incorrect information
+* **Faster ticket closure** and higher throughput
+
+== Target audience
+
+This lab is designed for:
+
+* **IT teams** implementing AI-driven self-service solutions
+* **DevOps engineers** operating agent-based systems on OpenShift
+* **Solution architects** evaluating AI automation platforms
+
+== What you will do in this lab
+
+With your environment already deployed (typically **Demo Mode** with a **test email UI** and **Greenmail** for in-cluster test mail), you will:
+
+* Walk through the **laptop refresh** conversation end-to-end in the test email UI
+* See how **routing** and **specialist** agents, **knowledge bases**, and **MCP** tools cooperate
+* Learn where to extend the stack for **other IT processes**, **channels**, **evaluations**, and **tracing**
+
+You are not deploying the platform from this guide; for install options and modes, see the {quickstart_repo_url}/blob/{quickstart_git_ref}/guides/DEPLOYMENT_MODE_GUIDE.md[Deployment Mode Guide,window="_blank"] in the quickstart repository.
+
+== Example use cases
+
+IT processes suitable for this kind of automation include:
+
+* Laptop refresh requests
+* Privacy Impact Assessment (PIA)
+* RFP generation
+* Access request processing
+* Software license requests
+
+The laptop refresh scenario demonstrates the pattern; you can extend it by adding specialist agents, MCP servers, and knowledge bases.
+
+== Logical architecture
+
+The runtime breaks down into a few cooperating services:
+
+[cols="1,3",options="header"]
+|===
+|Component |Role
+
+|*Request Manager*
+|Ingress for all channels (email, Slack, API, etc.); session and conversation orchestration; dispatches work to the agent service.
+
+|*Routing agent*
+|First-line triage: understands intent and hands off to the right specialist (e.g. laptop refresh).
+
+|*Specialist agents*
+|Process-specific LangGraph flows: gather policy-compliant information, use tools, and produce structured outcomes (e.g. ServiceNow ticket).
+
+|*Agent service*
+|Hosts LangGraph graphs, RAG / knowledge retrieval, and coordination with Llama Stack for inference.
+
+|*MCP servers*
+|Model Context Protocol adapters to external systems (ServiceNow, HR APIs, etc.).
+
+|*Evaluation framework* (optional)
+|Synthetic multi-turn scenarios and business-oriented metrics for regression awareness.
+
+|*OpenTelemetry* (optional)
+|Distributed tracing across request manager, agents, LLM calls, and MCP.
+|===
+
+*Demo Mode* adds **Greenmail** for in-cluster test mail plus a **test email UI** in the browser so you can send and read messages. That lets you exercise the email channel without real SMTP or Knative production wiring. Other modes swap channel adapters while keeping the same agent core—see the deployment guide linked above.
+
+== Request flow (high level)
+
+Users never talk to the specialist directly; everything goes through the request manager and routing layer. That keeps channel adapters thin and agent logic consistent.
+
+[mermaid]
+....
+flowchart LR
+    subgraph User
+        U[User]
+    end
+    subgraph Channels
+        Slack[Slack]
+        Email[Email]
+        API[API/CLI]
+    end
+    RM[Request Manager]
+    RA[Routing Agent]
+    SA[Specialist Agent]
+    KB[(Knowledge Base)]
+    MCP[MCP Servers]
+    U --> Channels
+    Channels --> RM
+    RM --> RA
+    RA --> SA
+    SA --> KB
+    SA --> MCP
+....
+
+== Happy path: laptop refresh (conceptual)
+
+For the lab exercise, the specialist walks eligibility, regional catalog, and approval before creating a ticket. The exact tool calls depend on configuration, but the narrative is stable:
+
+[mermaid]
+....
+sequenceDiagram
+    participant U as User (email)
+    participant RM as Request Manager
+    participant RA as Routing agent
+    participant SA as Laptop specialist
+    participant KB as Knowledge / RAG
+    participant MCP as MCP (e.g. ServiceNow)
+
+    U->>RM: Incoming message (channel adapter)
+    RM->>RA: Classify / route
+    RA->>SA: Hand off laptop refresh
+    SA->>KB: Policy & catalog context
+    SA->>U: Eligibility, options, confirmations
+    U->>SA: Selection & approval
+    SA->>MCP: Create ticket
+    MCP-->>SA: Ticket ID
+    SA->>U: Confirmation with ticket reference
+....
+
+== Key technologies
+
+* *Llama Stack* — AI inference for Llama-class models
+* *LangGraph* — Stateful agent graphs and orchestration
+* *MCP* — Standardized tool and data access for external systems
+* *RAG / knowledge bases* — Grounding in policy and process docs
+* *OpenTelemetry* — Observability across async boundaries
+* *OpenShift / Kubernetes* — Where the services run
+
+== Related resources
+
+* {quickstart_repo_url}[Quickstart repository,window="_blank"] — source, Helm charts, and operational guides
+* {quickstart_repo_url}/blob/{quickstart_git_ref}/guides/COMPONENT_GUIDE.md[Component Guide,window="_blank"] — deeper component and package layout
+* {quickstart_repo_url}/blob/{quickstart_git_ref}/guides/DEPLOYMENT_MODE_GUIDE.md[Deployment Mode Guide,window="_blank"] — demo, testing, and production modes
+* https://www.redhat.com/en/blog/manual-agentic-streamlining-it-processes-red-hat-openshift-ai[Blog: From manual to agentic,window="_blank"]
+* https://developers.redhat.com/articles/2026/01/26/ai-quickstart-self-service-agent-it-process-automation[Technical blog series: AI quickstart IT Self-Service Agent,window="_blank"]
+
+**Next:** xref:02-interact.adoc[Interact with the Agent] — hands-on laptop refresh via the test email UI.
