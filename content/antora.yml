@@ -10,9 +10,9 @@ asciidoc:
     page-pagination: true
     showroom-collection-version: v1.5.6
     lab_name: IT Self-Service Agent for IT Process Automation
-    guid: '%GUID%'
-    # Apps ingress domain (e.g. apps.cluster-….rhdp.net). RHDP user_data often uses this key; %DOMAIN% may be merged at deploy like %GUID%.
-    openshift_cluster_ingress_domain: '%DOMAIN%'
+    # Local Antora preview: use the same demo cluster as openshift_console_url / bastion below. RHDP Showroom overwrites these keys from user_data at deploy.
+    guid: abc123
+    openshift_cluster_ingress_domain: apps.cluster-abc123.ocpv00.rhdp.net
     ssh_user: lab-user
     ssh_password: changeme
     bastion_public_hostname: bastion.abc123.ocpv00.rhdp.net
