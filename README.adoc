@@ -34,6 +34,8 @@ podman run --rm --name antora -v $PWD:/antora:z -p 8080:8080 -i -t ghcr.io/julia
 +
 (On non-SELinux systems, omit `:z`.)
 
+NOTE: Mermaid diagrams need `node_modules` from `npm ci`. If diagrams are blank, use `make run` (runs `npm ci` before Podman) or run `npm ci` once in the repo root, then use the command above.
+
 . Edit content in `content/modules/ROOT/pages/`
 
 == Local Development
@@ -51,6 +53,8 @@ podman-compose up
 ----
 
 Open http://localhost:8080 after the build completes.
+
+*Makefile (local):* `make run` — Podman viewer (runs `npm ci` first so Mermaid resolves); `make check` / `make build` — Antora to `www/`; `make serve` — build then Python `http.server`; `make install` then `make lint` — yamllint + Vale on modules; `make format` — Prettier on playbook YAML. See `make help`. Vale styles come from `vale sync` (`make install` / `make vale-sync`); needs network once.
 
 See the https://rhpds.github.io/showroom_template_nookbag/modules/content-repo.html[Content Repository] guide for directory layout and dev mode.
 

@@ -78,56 +78,54 @@ The runtime breaks down into a few cooperating services:
 
 *Demo Mode* adds **Greenmail** for in-cluster test mail plus a **test email UI** in the browser so you can send and read messages. That lets you exercise the email channel without real SMTP or Knative production wiring. Other modes swap channel adapters while keeping the same agent core—see the deployment guide linked above.
 
-== Request flow (high level)
+== Platform architecture (quickstart repository)
 
-Users never talk to the specialist directly; everything goes through the request manager and routing layer. That keeps channel adapters thin and agent logic consistent.
+`docs/ARCHITECTURE_DIAGRAMS.md` in the quickstart repo documents detailed service and event flows as **ASCII diagrams** only (no figures in that file). The **platform overview figure** ships as a PNG next to it and is embedded from the quickstart README’s *Architecture diagrams* section—use the same asset here so the lab matches the repository.
 
-[mermaid]
-....
-flowchart LR
-    subgraph User
-        U[User]
-    end
-    subgraph Channels
-        Slack[Slack]
-        Email[Email]
-        API[API/CLI]
-    end
-    RM[Request Manager]
-    RA[Routing Agent]
-    SA[Specialist Agent]
-    KB[(Knowledge Base)]
-    MCP[MCP Servers]
-    U --> Channels
-    Channels --> RM
-    RM --> RA
-    RA --> SA
-    SA --> KB
-    SA --> MCP
-....
+image::https://raw.githubusercontent.com/rh-ai-quickstart/it-self-service-agent/{quickstart_git_ref}/docs/images/top-level-architecture.png[Common platform architecture,width=800,align=center,link="{quickstart_repo_url}/blob/{quickstart_git_ref}/README.md#architecture-diagrams",window="_blank"]
 
+Same diagram and surrounding context: {quickstart_repo_url}/blob/{quickstart_git_ref}/README.md#architecture-diagrams[README — Architecture diagrams,window="_blank"].
+
+== Key request flow (high level)
+
+Users never talk to the specialist directly; everything goes through the request manager and routing layer. That keeps channel adapters thin and agent logic consistent. The quickstart README summarizes the path as:
+
+. User initiates a request through any channel (Slack, email, API, web).
+. Request Manager validates the request and routes it to the routing agent.
+. Routing agent interacts with the user to determine intent.
+. Routing agent hands the session off to the appropriate specialist agent.
+. Specialist agent completes the request using knowledge bases and MCP servers.
+
+The <<happy-path-laptop,Happy path>> section below shows the same idea as a sequence diagram for the **laptop refresh** lab (email channel).
+
+[[detailed-service-flows]]
+== Detailed service and event flows
+
+For production eventing (Knative, CloudEvents), user-initiated API paths, **Integration Dispatcher** delivery, database and session boundaries, and development versus testing modes, see the ASCII diagrams in {quickstart_repo_url}/blob/{quickstart_git_ref}/docs/ARCHITECTURE_DIAGRAMS.md[docs/ARCHITECTURE_DIAGRAMS.md,window="_blank"].
+
+[[happy-path-laptop]]
 == Happy path: laptop refresh (conceptual)
 
-For the lab exercise, the specialist walks eligibility, regional catalog, and approval before creating a ticket. The exact tool calls depend on configuration, but the narrative is stable:
+For the lab exercise, the specialist walks eligibility, regional catalog, and approval before creating a ticket. The exact tool calls depend on configuration, but the narrative is stable. (Fewer lifelines below keeps the figure readable; full ASCII flows are linked from <<detailed-service-flows,Detailed service and event flows>>.)
 
-[mermaid]
+[mermaid,width=100%]
 ....
 sequenceDiagram
     participant U as User (email)
     participant RM as Request Manager
     participant RA as Routing agent
     participant SA as Laptop specialist
-    participant KB as Knowledge / RAG
-    participant MCP as MCP (e.g. ServiceNow)
+    participant KT as Knowledge & tools (RAG / MCP)
 
     U->>RM: Incoming message (channel adapter)
     RM->>RA: Classify / route
     RA->>SA: Hand off laptop refresh
-    SA->>KB: Policy & catalog context
+    SA->>KT: Policy & catalog context
+    KT-->>SA: Grounded context
     SA->>U: Eligibility, options, confirmations
     U->>SA: Selection & approval
-    SA->>MCP: Create ticket
-    MCP-->>SA: Ticket ID
+    SA->>KT: Create ticket (e.g. ServiceNow)
+    KT-->>SA: Ticket ID
     SA->>U: Confirmation with ticket reference
 ....
 
@@ -143,6 +141,7 @@ sequenceDiagram
 == Related resources
 
 * {quickstart_repo_url}[Quickstart repository,window="_blank"] — source, Helm charts, and operational guides
+* {quickstart_repo_url}/blob/{quickstart_git_ref}/README.md#architecture-diagrams[README — Architecture diagrams,window="_blank"] — platform overview figure (`docs/images/top-level-architecture.png`) and evaluation/observability context
 * {quickstart_repo_url}/blob/{quickstart_git_ref}/guides/COMPONENT_GUIDE.md[Component Guide,window="_blank"] — deeper component and package layout
 * {quickstart_repo_url}/blob/{quickstart_git_ref}/guides/DEPLOYMENT_MODE_GUIDE.md[Deployment Mode Guide,window="_blank"] — demo, testing, and production modes
 * https://www.redhat.com/en/blog/manual-agentic-streamlining-it-processes-red-hat-openshift-ai[Blog: From manual to agentic,window="_blank"]

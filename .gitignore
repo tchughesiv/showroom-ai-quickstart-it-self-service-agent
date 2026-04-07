@@ -1,12 +1,20 @@
 # Ignore macOS system files
 .DS_Store
 
+# Local Python venv and vendored Vale (make install)
+.venv/
+.tools/
+
 # Ignore node_modules directory
 node_modules/
 
 # Ignore build output
 www/
 .cache/
+
+# Vale package styles from `vale sync` (not committed; recreated by make install / vale sync)
+.vale/styles/packages/
+.vale/styles/write-good/
 
 # Ignore IDE and editor files
 .vscode/
@@ -30,9 +38,6 @@ secrets.json
 *.so
 *.dylib
 *.core
-
-# Ignore package-lock.json for npm
-package-lock.json
 
 # Ignore yarn.lock for Yarn
 yarn.lock

@@ -12,4 +12,4 @@ view_switcher:
 
 tabs:
   - name: Webmail
-    url: 'https://test-email-server-ui-user-${GUID}-it-selfsvc.${DOMAIN}'
+    url: "https://test-email-server-ui-user-${GUID}-it-selfsvc.${DOMAIN}"

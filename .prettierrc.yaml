@@ -1,0 +1,3 @@
+# Used by `make format` for playbook/config YAML only (not AsciiDoc).
+printWidth: 120
+proseWrap: preserve

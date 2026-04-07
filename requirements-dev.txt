@@ -1,0 +1,2 @@
+# Local dev / make lint-yaml (installed into .venv by `make install`)
+yamllint>=1.35.0,<2
