@@ -9,10 +9,6 @@ on:
       - '.github/workflows/gh-pages.yml'
   pull_request:
     branches: [main]
-    paths:
-      - 'content/**'
-      - 'site.yml'
-      - '.github/workflows/gh-pages.yml'
   workflow_dispatch:
 
 permissions:
@@ -25,6 +21,25 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: lint and site check
+        run: |
+          make lint
+          make check
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -54,7 +69,7 @@ jobs:
           path: www
   deploy:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-    needs: build
+    needs: [build, verify]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
