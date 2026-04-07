@@ -1,12 +1,10 @@
 = IT Self-Service Agent Quickstart Lab
 :navtitle: Lab Overview
-:toc:
-:toc-placement: preamble
 :icons: font
 
 == What You'll Learn
 
-This hands-on lab walks you through the **IT Self-Service Agent** for IT process automation on Red Hat OpenShift. Your **environment is already provisioned**—you use the published URLs and access details from your deployment (for example RHDP lab output or team instructions).
+This hands-on lab walks you through the **IT Self-Service Agent** for IT process automation on Red Hat OpenShift. Your **environment is already provisioned**. To open the test email application, stay in Showroom: use the **Test email UI** tab in the right-hand pane (split screen with this lab), or follow the direct link on xref:02-interact.adoc[Interact with the Agent]. You do not need to look up application URLs in RHDP lab output.
 
 By the end of this workshop you will:
 

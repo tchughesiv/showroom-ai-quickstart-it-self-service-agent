@@ -1,7 +1,5 @@
 = Interact with the Agent via Email
 :navtitle: Interact with the Agent
-:toc:
-:toc-placement: preamble
 :icons: font
 
 == Learning Objectives
@@ -14,7 +12,7 @@ By the end of this section you will be able to:
 
 == Why Email?
 
-IT workflows—approvals, follow-ups, ticket updates—often happen over email. The quickstart *meets users where they are*: email is a continuation and notification channel where conversations resume after delays and responses can be asynchronous. The same agent works across Slack, email, ServiceNow, and CLI. See https://developers.redhat.com/articles/2026/02/09/self-service-ai-agent-slack-email-servicenow[AI meets you where you are: Slack, email & ServiceNow,window="_blank"] for more.
+IT workflows—approvals, follow-ups, ticket updates—often happen over email. The quickstart *meets users where they are*: email is a continuation and notification channel where conversations resume after delays and responses can be asynchronous. The same **routing and specialist** logic applies whether users engage in **Slack** or **email**; **ServiceNow** is reached through MCP so approved work becomes ITSM records (for example tickets), and the **CLI** supports testing the same paths. See https://developers.redhat.com/articles/2026/02/09/self-service-ai-agent-slack-email-servicenow["AI meets you where you are: Slack, email & ServiceNow",window="_blank"] for session continuity and architecture.
 
 == Step 1: Open the test email UI
 
@@ -22,9 +20,7 @@ In Showroom, open the **Test email UI** tab in the right-hand pane—it loads th
 
 https://test-email-server-ui-user-{guid}-it-selfsvc.{openshift_cluster_ingress_domain}[Test email UI,window="_blank"]
 
-The hostname uses your environment’s `guid` and cluster apps domain (from RHDP `user_data` when deployed, or from `site.yml` when you build locally).
-
-If that link is not valid in your environment, use the URL from your lab instructions or discover the Route from the cluster (below). In Demo Mode, **Greenmail** runs in the cluster as the test mail server for those messages.
+If that link does not open the UI, try the **Test email UI** Showroom tab first—it loads the same URL. If you still cannot reach the UI, discover the Route from the cluster (below) or follow your lab provider’s guidance. In Demo Mode, **Greenmail** runs in the cluster as the test mail server for those messages.
 
 If you need to discover it from the cluster (and you have CLI access to the deployment namespace):
 
@@ -39,11 +35,10 @@ oc get routes -n $NAMESPACE | grep -i email
 
 . Select a user from the dropdown (e.g. `alice.johnson@company.com`)
 . The subject is pre-filled with "Laptop refresh"
-. Send an initial message—e.g. `Hello` or `Help`—to get a response from the routing agent
-. Tell the agent you want a laptop refresh (e.g. `I'd like to start a laptop refresh request`)
-. Click "Send"
+. Send an initial message—e.g. `Hello` or `Help`—and click *Send*. Within several seconds the **routing agent** should reply with a short greeting and an offer to help (exact wording varies).
+. Send a follow-up saying you want a laptop refresh (e.g. `I'd like to start a laptop refresh request`) and click *Send*.
 
-**Expected outcome:** The routing agent responds; once you request a laptop refresh, you're handed off to the specialist agent, which returns laptop info, eligibility, and asks if you'd like to see available options.
+**Expected outcome:** After your follow-up, you are handed off to the **laptop refresh specialist**, which returns laptop info, eligibility, and asks if you'd like to see available options.
 
 *You don't need to type these phrases exactly—they're example prompts. The agent understands natural language; follow the flow in whatever way feels natural.*
 
@@ -54,7 +49,7 @@ Once the laptop refresh specialist has your session, continue in the test email 
 * **You:** Ask to see available options (e.g. `I'd like to see available laptop options`)
 * **Expected:** Agent lists four laptop options with specs and pricing for your region (NA, EMEA, APAC, or LATAM). *LLM responses can take 10–30 seconds.*
 
-* **You:** Select a laptop (e.g. `I'd like option 1, the Apple MacBook Air M2`)
+* **You:** Select a laptop—short answers work (e.g. `option 1`, `the MacBook Air`, or `the first one`). You can name the model if you prefer; the agent only needs to know which offer you mean.
 * **Expected:** Agent confirms and asks for approval to create a ServiceNow ticket
 
 * **You:** Approve (e.g. `Yes, please create the ticket`)
@@ -62,13 +57,13 @@ Once the laptop refresh specialist has your session, continue in the test email 
 
 == Step 4: Test Different User Scenarios
 
-Select different users from the dropdown to see region and eligibility differences:
+Select different users from the dropdown to see how **region** and mock **employee data** change responses:
 
-* `alice.johnson@company.com` — NA region, eligible for refresh
-* `maria.garcia@company.com` — LATAM region, different laptop options
-* `john.doe@company.com` — may not be eligible (laptop too new)
+* `alice.johnson@company.com` — **EMEA**; eligible for refresh under the mock policy
+* `maria.garcia@company.com` — **LATAM**; different laptop offerings for that region
+* `john.doe@company.com` — **EMEA** (same regional catalog as Alice); different laptop on file—compare the device details the agent cites
 
-**Expected outcome:** Different laptop options by region; different eligibility results by laptop age.
+**Expected outcome:** **LATAM** vs **EMEA** catalogs differ; Alice and John share EMEA listings but see different on-file laptop facts.
 
 == Resetting Conversation State
 
@@ -79,6 +74,6 @@ To start a fresh conversation with the same user, type `reset` in the message bo
 **What you learned:**
 * Using the test email UI to interact with the agent via email
 * Completing the laptop refresh workflow end-to-end
-* Testing eligibility and region-specific options with different users
+* Seeing how region and mock employee records change options and replies
 
 **Next:** xref:03-going-further.adoc[Going Further] — extensibility, evals, tracing, and blog series.

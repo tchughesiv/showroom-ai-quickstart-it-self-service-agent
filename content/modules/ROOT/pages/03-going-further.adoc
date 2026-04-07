@@ -1,7 +1,5 @@
 = Going Further — Extensibility and Production Readiness
 :navtitle: Going Further
-:toc:
-:toc-placement: preamble
 :icons: font
 
 == Learning Objectives
@@ -44,7 +42,7 @@ You completed the laptop refresh flow via email. The same agent works across mul
 
 The design principle: *meet users where they already work*. The request manager normalizes incoming requests regardless of channel, so the agent logic stays the same. Adding a new channel (e.g. Teams, webhooks) means adding an adapter—not rewriting the agent.
 
-For integration setup, see https://developers.redhat.com/articles/2026/02/09/self-service-ai-agent-slack-email-servicenow[AI meets you where you are: Slack, email & ServiceNow,window="_blank"] and the guides for {quickstart_repo_url}/blob/{quickstart_git_ref}/guides/SLACK_SETUP.md[Slack,window="_blank"], {quickstart_repo_url}/blob/{quickstart_git_ref}/guides/EMAIL_SETUP.md[Email,window="_blank"], and {quickstart_repo_url}/blob/{quickstart_git_ref}/guides/SERVICE_NOW_BOOTSTRAP_AUTOMATED.md[ServiceNow,window="_blank"].
+For integration setup, see https://developers.redhat.com/articles/2026/02/09/self-service-ai-agent-slack-email-servicenow["AI meets you where you are: Slack, email & ServiceNow",window="_blank"] and the guides for {quickstart_repo_url}/blob/{quickstart_git_ref}/guides/SLACK_SETUP.md[Slack,window="_blank"], {quickstart_repo_url}/blob/{quickstart_git_ref}/guides/EMAIL_SETUP.md[Email,window="_blank"], and {quickstart_repo_url}/blob/{quickstart_git_ref}/guides/SERVICE_NOW_BOOTSTRAP_AUTOMATED.md[ServiceNow,window="_blank"].
 
 == Evaluations: Validating Non-Deterministic Systems
 
@@ -72,9 +70,11 @@ Production agentic systems involve complex async flows—request manager, agent 
 The Red Hat Developer blog series explores what we learned building the IT self-service agent:
 
 * **Part 1:** https://developers.redhat.com/articles/2026/01/26/ai-quickstart-self-service-agent-it-process-automation[AI quickstart: Self-service agent for IT process automation,window="_blank"] — Overview and architecture
-* **Part 2:** https://developers.redhat.com/articles/2026/02/09/self-service-ai-agent-slack-email-servicenow[AI meets you where you are: Slack, email & ServiceNow,window="_blank"] — Multi-channel integration, CloudEvents, session continuity
-* **Part 3:** Prompt engineering: Big vs. small prompts (forthcoming)
-* **Part 4:** Automate AI agents with the Responses API in Llama Stack (forthcoming)
+* **Part 2:** https://developers.redhat.com/articles/2026/02/09/self-service-ai-agent-slack-email-servicenow["AI meets you where you are: Slack, email & ServiceNow",window="_blank"] — Multi-channel integration, CloudEvents, session continuity
+* **Part 3:** https://developers.redhat.com/articles/2026/02/23/prompt-engineering-big-vs-small-prompts-ai-agents[Prompt engineering: Big vs. small prompts for AI agents,window="_blank"] — Single large prompt vs multi-step LangGraph flows
+* **Part 4:** https://developers.redhat.com/articles/2026/03/09/automate-ai-agents-responses-api-llama-stack[Automate AI agents with the Responses API in Llama Stack,window="_blank"] — Responses API and agent automation patterns
+* **Part 5:** https://developers.redhat.com/articles/2026/03/23/eval-driven-development-build-evaluate-ai-agents[Eval-driven development: Build and evaluate reliable AI agents,window="_blank"] — Eval-driven development with DeepEval
+* **Part 6:** https://developers.redhat.com/articles/2026/04/06/distributed-tracing-agentic-workflows-opentelemetry[Distributed tracing for agentic workflows with OpenTelemetry,window="_blank"] — End-to-end tracing for async agent workflows
 
 These posts cover architectural trade-offs, evaluation learnings, token usage comparisons, and production patterns that apply beyond IT automation.
 
@@ -82,7 +82,7 @@ These posts cover architectural trade-offs, evaluation learnings, token usage co
 
 **What you learned:**
 * The framework extends to other IT processes by swapping specialist agents, MCP servers, and knowledge bases
-* The same agent works across Slack, email, ServiceNow, and CLI—meet users where they are
+* The same agent logic spans Slack and email conversations, ServiceNow via MCP for ticketing, and CLI-based testing—meet users where they are
 * Evaluations and tracing are key for production readiness; guides and docs available
 * The blog series offers deeper dives on integration, prompting, and scale
 

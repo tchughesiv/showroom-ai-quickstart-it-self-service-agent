@@ -1,7 +1,5 @@
 = Conclusion and Next Steps
 :navtitle: Conclusion
-:toc:
-:toc-placement: preamble
 :icons: font
 
 == What You Accomplished
@@ -35,7 +33,7 @@ To adapt the platform for another IT process:
 * {quickstart_repo_url}[Quickstart repository,window="_blank"] — source code and guides
 * https://www.redhat.com/en/blog/manual-agentic-streamlining-it-processes-red-hat-openshift-ai[From manual to agentic,window="_blank"] — business value overview
 * https://developers.redhat.com/articles/2026/01/26/ai-quickstart-self-service-agent-it-process-automation[Part 1: AI quickstart,window="_blank"] — Overview and architecture
-* https://developers.redhat.com/articles/2026/02/09/self-service-ai-agent-slack-email-servicenow[Part 2: Slack, email & ServiceNow,window="_blank"] — Multi-channel integration and extensibility
+* https://developers.redhat.com/articles/2026/02/09/self-service-ai-agent-slack-email-servicenow["Part 2: Slack, email & ServiceNow",window="_blank"] — Multi-channel integration and extensibility
 * {quickstart_repo_url}/blob/{quickstart_git_ref}/guides/COMPONENT_GUIDE.md[Component Guide,window="_blank"] — architecture and component details
 * {quickstart_repo_url}/blob/{quickstart_git_ref}/guides/DEPLOYMENT_MODE_GUIDE.md[Deployment Mode Guide,window="_blank"] — testing vs demo vs production
 * {quickstart_repo_url}/blob/{quickstart_git_ref}/guides/EVALUATIONS_GUIDE.md[Evaluations Guide,window="_blank"] — evaluation framework details
