@@ -65,8 +65,9 @@ To start a fresh conversation with the same user, type `reset` in the message bo
 == Summary
 
 **What you learned:**
-* Using the test email UI to interact with the agent via email
-* Completing the laptop refresh workflow end-to-end
-* Seeing how region and mock employee records change options and replies
 
-**Next:** xref:03-going-further.adoc[Going Further] — extensibility, evals, tracing, and blog series.
+* How the test email UI lets you interact with the agent end-to-end via email
+* How the laptop refresh workflow progresses from initial request through eligibility, options, and ticket creation
+* How region and mock employee records affect the agent's responses and available laptop options
+
+**Next:** xref:03-explore-deployment.adoc[Explore the Deployment] — walk the running OpenShift workloads that power the agent.

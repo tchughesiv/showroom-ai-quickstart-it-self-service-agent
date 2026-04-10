@@ -10,6 +10,7 @@ By the end of this workshop you will:
 
 * Understand how routing, specialist agents, knowledge bases, and MCP integrations fit together
 * Complete the **laptop refresh** flow via the test email UI
+* Explore the OpenShift deployment and understand the key workloads that power the agent
 * Know where to extend the platform and how evals, tracing, and the blog series support production thinking
 
 *Time to complete:* about 15–25 minutes, depending on how much you read and how long model responses take in the test email UI
@@ -28,7 +29,8 @@ The platform integrates with knowledge bases, MCP (Model Context Protocol) serve
 
 . *xref:01-overview.adoc[Architecture and platform overview]* — Components, request flow, and how Demo Mode fits your lab
 . *xref:02-interact.adoc[Interact with the Agent]* — Laptop refresh end-to-end in the test email UI
-. *xref:03-going-further.adoc[Going Further]* — Extensibility, evals, tracing, and blog series
+. *xref:03-explore-deployment.adoc[Explore the Deployment]* — Walk the running OpenShift workloads that power the agent
+. *xref:04-going-further.adoc[Going Further]* — Extensibility, evals, tracing, and blog series
 . *xref:99-conclusion.adoc[Conclusion and Next Steps]* — Summary and recommended follow-ups
 
 == Key Technologies

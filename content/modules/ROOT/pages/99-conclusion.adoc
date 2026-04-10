@@ -8,6 +8,7 @@ In this lab you:
 
 * Reviewed the platform architecture and how routing, specialists, RAG, and MCP work together
 * Completed the laptop refresh flow via the test email UI
+* Explored the OpenShift deployment and identified the key workloads that power the agent
 * Explored extensibility, evals, and tracing (Going Further)
 
 == Recommended Next Steps
