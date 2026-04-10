@@ -21,9 +21,9 @@ A terminal tab is available in the top right of the browser window. Select the t
 
 . Log into the cluster
 +
-[source,role="execute"]
+[source,bash,role="copypaste",subs=attributes+]
 ----
-oc login --insecure-skip-tls-verify=false --username {user} --password {password} {openshift_api_url}
+oc login {openshift_api_url} --username {user} --password {password} --insecure-skip-tls-verify=false
 ----
 
 == Step 3: Inspect the Workloads

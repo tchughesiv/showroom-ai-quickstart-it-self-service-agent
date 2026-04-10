@@ -21,6 +21,9 @@ asciidoc:
     bastion_ssh_user_name: lab-user
     bastion_ssh_password: password
     openshift_console_url: https://console-openshift-console.apps.cluster-abc123.ocpv00.rhdp.net
+    openshift_api_url: https://api.cluster-abc123.ocpv00.rhdp.net:6443
+    user: lab-user
+    password: changeme
     # Pin all quickstart GitHub links (branch or tag). Sync Quickstart Repo tab in ui-config.yml and page-links url below when you change this.
     quickstart_repo_url: https://github.com/rh-ai-quickstart/it-self-service-agent
     quickstart_git_ref: v0.0.12
