@@ -1,0 +1,104 @@
+= Explore the Deployment
+:navtitle: Explore the Deployment
+:icons: font
+
+== Learning Objectives
+
+By the end of this section you will be able to:
+
+* Log into the OpenShift cluster that is running the it-self-service-agent deployment
+* Identify the key workloads and understand what each one does
+
+== The Running Architecture
+
+You interacted with the agent in the previous step. Now look at what is actually running on OpenShift to make that work.
+
+== Step 1: Switch to the terminal tab
+
+A terminal tab is available in the top right of the browser window. Select the tab labeled **terminal** to switch to the terminal.
+
+== Step 2: Log into the cluster
+
+. Log into the cluster
++
+[source,role="execute"]
+----
+oc login --insecure-skip-tls-verify=false --username {user} --password {password} {openshift_api_url}
+----
+
+== Step 3: Inspect the Workloads
+
+. List the running pods
++
+[source,role="execute"]
+----
+oc get pods
+----
+
+. You should see a list of pods that look something like this:
++
+----
+NAME                                                         READY   STATUS      RESTARTS       AGE
+llamastack-6478c5b4b5-swdd8                                  1/1     Running     2 (107s ago)   116s
+mcp-self-service-agent-snow-5fdc7ff9dd-hqf5l                 1/1     Running     0              116s
+pgvector-0                                                   1/1     Running     0              116s
+self-service-agent-agent-service-848df4994f-v768b            1/1     Running     0              116s
+self-service-agent-db-migration-m8wxt                        0/1     Completed   0              116s
+self-service-agent-init-qk886                                0/1     Completed   0              116s
+self-service-agent-integration-dispatcher-5b6bc9796f-tphsf   1/1     Running     0              116s
+self-service-agent-mock-eventing-6bbbb669c4-mqrph            1/1     Running     0              116s
+self-service-agent-mock-servicenow-7d4f9bc65d-zpjw6          1/1     Running     0              116s
+self-service-agent-request-manager-78fb5f4cb7-szrzs          1/1     Running     0              116s
+test-email-server-56954b975f-nc2wt                           3/3     Running     0              2m32s
+----
+
+. Here is what each pod does:
++
+[cols="1,2", options="header"]
+|===
+| Workload | Role
+
+| **llamastack**
+| Llama Stack server providing LLM inference and knowledge-base (RAG) APIs
+
+| **mcp-self-service-agent-snow**
+| MCP server exposing ServiceNow operations (ticket creation, querying) as tools the agent can call
+
+| **pgvector**
+| PostgreSQL database with pgvector extension; stores conversation history and provides vector search for the RAG knowledge base
+
+| **self-service-agent-agent-service**
+| Hosts the LangGraph state machine — routing agent and specialist agents live here
+
+| **self-service-agent-db-migration**
+| One-time Job that initializes the database schema; shows as Completed once done
+
+| **self-service-agent-init**
+| One-time Job that seeds initial configuration; shows as Completed once done
+
+| **self-service-agent-integration-dispatcher**
+| Receives CloudEvents from the request manager and dispatches them to the appropriate agent or external integration
+
+| **self-service-agent-mock-eventing**
+| Lightweight mock event bus used in Demo Mode in place of a full eventing infrastructure
+
+| **self-service-agent-mock-servicenow**
+| Mock ServiceNow instance used in Demo Mode so ticket creation and queries work without a real ServiceNow subscription
+
+| **self-service-agent-request-manager**
+| Receives inbound messages (email, Slack, CLI), routes them as CloudEvents, and sends replies
+
+| **test-email-server**
+| Runs three containers: the Greenmail SMTP/IMAP mail server, the test email UI you used in the previous step, and a mail polling sidecar
+|===
+
+You can look around further or move on to the next step to learn about other key functionality of the quickstart.
+
+== Summary
+
+**What you learned:**
+
+* How to use the `oc` CLI to access the OpenShift cluster running the it-self-service-agent deployment
+* What each workload does and how they cooperate — from the request-manager and agent-service handling conversation flow, to pgvector for storage and the MCP server for ServiceNow integration
+
+**Next:** xref:04-going-further.adoc[Going Further] — extensibility, evals, tracing, and blog series.

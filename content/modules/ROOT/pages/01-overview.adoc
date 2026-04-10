@@ -2,7 +2,7 @@
 :navtitle: Architecture
 :icons: font
 
-This page explains *what* the IT Self-Service Agent is, *how* the pieces fit together, and *why* the design scales to other IT processes. The hands-on lab assumes you already have a **provisioned environment** (for example, from Red Hat Demo Platform or your team’s OpenShift namespace). For the test email UI, use Showroom’s **Test email UI** tab in the right-hand pane or the direct link on xref:02-interact.adoc[Interact with the Agent]—you do not need to look up that application URL in RHDP lab output. For OpenShift credentials and namespace details (for example for `oc` or the console), follow your environment’s instructions.
+This page explains *what* the IT Self-Service Agent is, *how* the pieces fit together, and *why* the design scales to other IT processes. For the test email UI, use Showroom’s **Test email UI** tab in the right-hand pane or the direct link on xref:02-interact.adoc[Interact with the Agent]—you do not need to look up that application URL in RHDP lab output.
 
 == Business context
 
@@ -29,6 +29,7 @@ With your environment already deployed (typically **Demo Mode** with a **test em
 
 * Walk through the **laptop refresh** conversation end-to-end in the test email UI
 * See how **routing** and **specialist** agents, **knowledge bases**, and **MCP** tools cooperate
+* Explore the OpenShift deployment and understand the key workloads that power the agent
 * Learn where to extend the stack for **other IT processes**, **channels**, **evaluations**, and **tracing**
 
 You are not deploying the platform from this guide; for install options and modes, see the {quickstart_repo_url}/blob/{quickstart_git_ref}/guides/DEPLOYMENT_MODE_GUIDE.md[Deployment Mode Guide,window="_blank"] in the quickstart repository.

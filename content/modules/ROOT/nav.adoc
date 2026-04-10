@@ -3,6 +3,7 @@
 . Lab content
 * xref:01-overview.adoc[Architecture]
 * xref:02-interact.adoc[Interact with the Agent]
-* xref:03-going-further.adoc[Going Further]
+* xref:03-explore-deployment.adoc[Explore the Deployment]
+* xref:04-going-further.adoc[Going Further]
 
 * xref:99-conclusion.adoc[Conclusion and Next Steps]
